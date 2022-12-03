@@ -14,9 +14,6 @@
 
 int	check_sort(t_stack *top_a)
 {
-	// t_stack	*tmp;
-
-	// tmp = top_a;
 	if (top_a == NULL || top_a->next == NULL)
 		return (0);
 	while (top_a->next != NULL)

@@ -58,7 +58,6 @@ char	**ft_split(char const *s, char c)
 	pointer = (char **)malloc(sizeof(char *) * (string_length + 1));
 	if (!pointer)
 		ft_free(pointer);
-		// return (NULL);
 	strs = 0;
 	while (strs < string_length)
 	{
@@ -68,33 +67,11 @@ char	**ft_split(char const *s, char c)
 		pointer[strs] = (char *)malloc(sizeof(char) * (count_chars(s, c) + 1));
 		if (!pointer)
 			ft_free(pointer);
-			// return (NULL);
 		while (*s && *s != c)
 			pointer[strs][strc++] = *s++;
 		pointer[strs][strc] = '\0';
 		strs++;
 	}
 	pointer[strs] = 0;
-	// printf("")
 	return (pointer);
 }
-
-// int main()
-// {
-// 	char	s1[] = "       Hello World! jh     oh   ohoo  ooh   ";
-// 	char	**s2 = ft_split(s1, ' ');
-// 	int	i = 0;
-
-// 	while (s2[i])
-// 		printf("%s\n", s2[i++]);
-// 		ft_free(s2);
-// }
-
-// int main(int argc, char **argv)
-// {
-	
-// 	int	i = 0;
-// 	char **split = ft_split(argv[0], ' ');
-// 	while (split[i])
-// 		printf("%s\n", split[i++]);
-// }

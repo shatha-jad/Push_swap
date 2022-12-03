@@ -24,9 +24,6 @@ void initial_check_stack (t_stack *top_a, t_stack *top_b, char **split, char *ar
 
 int	check_sort(t_stack *top_a)
 {
-	// t_stack	*tmp;
-
-	// tmp = top_a;
 	if (top_a == NULL || top_a->next == NULL)
 		return (0);
 	while (top_a->next != NULL)
@@ -50,7 +47,6 @@ int	check_size(t_stack *top_a)
 		tmp = tmp->next;
 		i++;
 	}
-	// printf("%d\n", i);
 	return (i);
 }
 
@@ -58,32 +54,23 @@ void	check_dup(t_stack *str, char **split, char *args)
 {
 	t_stack	*original;
 	t_stack	*nextt;
-	// t_stack	*current;
 
 	original = str;
 	nextt = NULL;
-	// current = NULL;
 	if (str == NULL)
 		return ;
 	else
 	{
 		while (original)
 		{
-			// current = original;
 			nextt = original -> next;
 			while (nextt)
 			{
 				if (nextt->data == original->data)
-					// original->next = nextt->next;
-					// current->next = nextt->next;
-					{
 						free_error_stack(str, split, args, 1);
-						// error_msg(1);
-					}
+
 				else
-					// original = nextt;
-					// current = nextt;
-				nextt = nextt->next;
+					nextt = nextt->next;
 			}
 			original = original->next;
 		}

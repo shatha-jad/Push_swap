@@ -24,6 +24,5 @@ int	check_size(t_stack *top_a)
 		tmp = tmp->next;
 		i++;
 	}
-	// printf("%d\n", i);
 	return (i);
 }

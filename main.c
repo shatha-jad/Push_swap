@@ -12,10 +12,112 @@
 
 #include "push_swap.h"
 
+int	get_chunk_size(t_all *all)
+{
+	if(all->stack_size > 5 && all->stack_size < 20)
+		return (2);
+	else if(all->stack_size >= 20 && all->stack_size < 50)
+		return (3);
+	else if(all->stack_size >= 50 && all->stack_size < 80)
+		return (5);
+	else if(all->stack_size >= 80 && all->stack_size < 150)
+		return (8);
+	else if(all->stack_size >= 150 && all->stack_size < 250)
+		return (10);
+	else if(all->stack_size >= 250 && all->stack_size < 400)
+		return (12);
+	else if(all->stack_size >= 400 && all->stack_size < 600)
+		return (16);
+	else if(all->stack_size >= 600 && all->stack_size < 1000)
+		return (20);
+	else
+		return(50);
+}
+
+void	ft_print(t_all *all, int flag)
+{
+	int	i;
+
+	i = -1;
+	if(flag == 1)
+	{
+		while(*all->top_a)
+		{
+			printf("%d\n", (*all->top_a)->data);
+			(*all->top_a) = (*all->top_a)->next;
+		}
+	}
+	else if(flag == 2)
+	{
+		while(*all->top_b)
+		{
+			printf("%d\n", (*all->top_b)->data);
+			(*all->top_b) = (*all->top_b)->next;
+		}
+	}
+	else if(flag == 3)
+		printf("chunk size is %d\n", all->chunk_size);
+	else if(flag == 4)
+		printf("stack size if %d\n", all->stack_size);
+	else if (flag == 5)
+	{
+		while(++i < all->stack_size)
+			printf("%d\n", all->array[i]);
+	}
+
+}
+
+void ft_swap(int *xp, int *yp)
+{
+    int temp = *xp;
+    *xp = *yp;
+    *yp = temp;
+}
+ 
+void selectionSort(int arr[], int n)
+{
+    int i, j, min_idx;
+ 
+    // One by one move boundary of unsorted subarray
+    for (i = 0; i < n-1; i++)
+    {
+        // Find the minimum element in unsorted array
+        min_idx = i;
+        for (j = i+1; j < n; j++)
+          if (arr[j] < arr[min_idx])
+            min_idx = j;
+ 
+        // ft_swap the found minimum element with the first element
+           if(min_idx != i)
+            ft_swap(&arr[min_idx], &arr[i]);
+    }
+}
+
+void	init_struct(t_all *all, t_stack **top_a, t_stack **top_b)
+{
+	int		i;
+	t_stack *tmp;
+	
+	i = -1;
+	all->top_a = top_a;
+	all->top_b = top_b;
+	all->stack_size = check_size(*all->top_a);
+	all->chunk_size =  get_chunk_size(all);
+	all->array = malloc(all->stack_size * sizeof(int));
+	tmp = *all->top_a;
+	while(++i < all->stack_size && tmp != NULL)
+	{
+		all->array[i] = tmp->data;
+		tmp = tmp->next;
+	}
+	selectionSort(all->array, all->stack_size);
+}
+
 int main(int argc, char **argv)
 {
 	t_stack *top_a;
 	t_stack *top_b;
+	t_all	all;
 	// struct btreenode *bt;
 
 	int i;
@@ -29,70 +131,50 @@ int main(int argc, char **argv)
 	// if (argc < 2)
 	// 	error_msg(1);
 	args = ft_strsjoin(argc, argv, " ");
-	printf("args:%s\n", args);
+	// printf("args:%s\n", args);
 	split = ft_split(args, ' ');
 	if (!split[i])
 		exit(0);
 	while (split[i])
 		top_a = add_at_end(top_a, ft_atoi(split[i++], split, top_a, args));
 	initial_check_stack(top_a, top_b, split, args);
-	// printf("\n %d \n\n", check_size(top_a));
-	// for ( i = 0 ; i <= (check_size(top_a) - 1) ; i++ )
-	// {
-	//     insert ( &bt, top_a->data ) ;
-	// 	top_a = top_a->next;
-	// }
-	// insert(&top_a, &top_b, 3);
-	// inorder ( bt ) ;
+
+	init_struct(&all, &top_a, &top_b);
+	ft_print(&all, ARRAY);
 	// int median;
-	// median = stack_median(top_a, check_size(top_a));
-	// printf("median size: %d\n\n", median);
+	// int size;
+	// int mean;
+	// size = check_size(top_a);
+	// median = stack_medians(top_a);
+	// mean = stack_mean(top_a);
+	// printf("size: %d   median: %d mean: %d\n\n", size, median, mean);
+
+	// if (size > 5)
 	// sort_100(&top_a, &top_b);
-	// printf("data at top_a: %d\n", top_a->data);
-	// rotate_a_b(&top_a, 'r');
-	// printf("data at top_a: %d\n", top_a->data);
-	int median;
-	int size;
-	int mean;
-	int j;
-	j = 0;
-	size = check_size(top_a);
-	median = stack_medians(top_a);
-	mean = stack_mean(top_a);
-	printf("size: %d   median: %d mean: %d\n\n", size, median, mean);
-	t_stack *sort;
-	sort = bubbleSort(&top_a, check_size(top_a));
-	printf ("sorted by bubble sort:\n");
-		reset_index(sort);
-	while (sort != NULL)
-	{
-		printf("sorted data: %d   sorted index: %d\n", sort->data, sort->index);
-		sort = sort->next;
-	}
-	if (size > 5)
-	sort_100(&top_a, &top_b);
+
 	// reset_index(top_a);
 	// reset_index(top_b);
-	printf("\ntop_b:\n");
-	t_stack *tmp2;
-	tmp2 = top_b;
-	while (tmp2)
-	{
-		printf("Content is %d at index %d\n", tmp2->data, tmp2->index);
-		tmp2 = tmp2->next;
-	}
-	printf("top_a:\n");
-	t_stack *tmp;
-	tmp = top_a;
-	while (tmp)
-	{
-		printf("Content is %d at index %d\n", tmp->data, tmp->index);
-		tmp = tmp->next;
-	}
+	// printf("\ntop_b:\n");
+	// t_stack *tmp2;
+	// tmp2 = top_b;
+	// while (tmp2)
+	// {
+	// 	printf("Content is %d at index %d\n", tmp2->data, tmp2->index);
+	// 	tmp2 = tmp2->next;
+	// }
+	// printf("top_a:\n");
+	// t_stack *tmp;
+	// tmp = top_a;
+	// while (tmp)
+	// {
+	// 	printf("Content is %d at index %d\n", tmp->data, tmp->index);
+	// 	tmp = tmp->next;
+	// }
+	free(all.array);
 	free(args);
 	ft_free(split);
 	free_stack(top_a);
-	// free_stack(top_b);
+	free_stack(top_b);
 }
 
 // int	main(int argc, char **argv)

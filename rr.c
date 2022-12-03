@@ -15,14 +15,5 @@
 void	rr(t_stack **top_a, t_stack **top_b)
 {
 	rotate_a_b(top_a, 's');
-// 	t_stack *tmp2;
-// 	tmp2 = top_a;
-// 	while (tmp2->next != NULL)
-//  {
-//  	printf("tmp2: %d\n", tmp2->data);
-
-//  	// tmp3->next = tmp2->next;
-//  	tmp2 = tmp2->next;
-//  }
 	rotate_a_b(top_b, 's');
 }

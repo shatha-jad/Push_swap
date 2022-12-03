@@ -21,6 +21,7 @@ void sort_100(t_stack **top_a, t_stack **top_b)
 	int j;
 
 	size = check_size(*top_a);
+	
 	if (size == 1)
 		return;
 	// printf("i: %d  size: %d    median: %d mean: %d\n\n", i, size, median_a, mean_a);

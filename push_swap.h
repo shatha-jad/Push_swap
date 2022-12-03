@@ -23,9 +23,21 @@ typedef struct node {
 	int			data;
 	int			index;
 	struct node	*next;
-	// struct node	*p;
 }t_stack;
 
+typedef struct nodes {
+	t_stack	**top_a;
+	t_stack	**top_b;
+	int		stack_size;
+	int		chunk_size;
+	int		*array;
+}t_all;
+
+#define STACK_A		1
+#define	STACK_B		2
+#define	CHUNK_SIZE	3
+#define	STACK_SIZE	4
+#define	ARRAY		5
 // typedef struct stack {
 // 	int s_data;
 // 	struct stack *next;

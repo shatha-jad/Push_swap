@@ -15,12 +15,10 @@
 void	check_character_multi_empty(t_stack	*arg)
 {
 	int	i;
-	// int a;
 	
 	i = 0;
 	while (arg->next != NULL)
 	{
-		// a = arg-> data;
 		if ((arg->data >= '0' && arg->data <= '9') || (arg->data == ' ') || (arg->data == '-') || (arg->data == '+'))
 		{
 			arg = arg->next;
@@ -35,10 +33,7 @@ void	check_character_multi_empty(t_stack	*arg)
 			arg = arg->next ;
 		else if (arg->data == '+' && (arg->next->data >= '0' || arg->next->data <= '9'))
 			arg = arg->next ;
-		// else if (arg->data == " " && arg->next->data == NULL)
-		// 	error_msg;
 		else 
 					error_msg(1);
-		// arg = arg->next;
 	}
 }

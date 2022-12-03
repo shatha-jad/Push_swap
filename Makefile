@@ -13,7 +13,7 @@
 
 NAME    = push_swap
 CC      = gcc
-CFLAGS  = -Wall -Wextra -Werror
+CFLAGS  = -g3 -Wall -Wextra -Werror
 RM      = rm -f
 
 SRCS	= main.c ft_atoi.c ft_split.c parsing.c sort_lessthan_5.c sort_utils.c parsing_utils.c\
@@ -23,7 +23,7 @@ SRCS	= main.c ft_atoi.c ft_split.c parsing.c sort_lessthan_5.c sort_utils.c pars
 OBJS    = $(SRCS:.c=.o)
 
 $(NAME):    $(OBJS)
-			gcc $(CFLAGS) $(SRCS) -o $(NAME)
+			gcc $(CFLAGS) $(OBJS) -o $(NAME)
 
 all:        $(NAME)
 

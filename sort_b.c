@@ -14,9 +14,6 @@
 
 void sort_b( t_stack **top_b, int median_b)
 {
-	// int median_b;
-	// median_b = stack_medians(*top_b);
-	// printf("median of b: %d \n", median_b);
 	if ((*top_b)->data < median_b)
 		rotate_a_b(top_b, 'b');
 }

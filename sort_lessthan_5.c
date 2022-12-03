@@ -26,7 +26,6 @@ void sort_lessthan_5(t_stack **top_a, t_stack **top_b, char s)
 
 void sort_2(t_stack **top_a, char s)
 {
-	// if (check_size(top_a) == 2)
 	if (check_sort(*top_a)  == 0)
 			return ;
 	else
@@ -76,22 +75,6 @@ void sort_3(t_stack **top_a, char s)
 		revrotate_a_b(top_a, s);
 		sort_3(top_a, s);
 	}
-	// swap_a_b(*top_a, 'a');
-	// if (check_sort(*top_a)  == 0)
-	// 	return ;
-	// else if (check_sort(*top_a)  == 1)
-	// {
-	// 	revrotate_a_b(top_a, 'a');
-	// 	if (check_sort(*top_a)  == 0)
-	// 		return ;
-	// }
-	// else if (check_sort(*top_a)  == 1)
-	// {
-	// 	rotate_a_b(top_a, 'a');
-	// 	if (check_sort(*top_a)  == 0)
-	// 		return ;
-	// }
-		
 }
 
 void sort_4(t_stack **top_a, t_stack **top_b, char s)
@@ -99,10 +82,8 @@ void sort_4(t_stack **top_a, t_stack **top_b, char s)
 	if (check_sort(*top_a)  == 0)
 		return ;
 	
-	// t_stack	*tmp;
 	int min;
-	// int 
-	// tmp = *top_a;
+
 	min = smallest(check_size(*top_a), *top_a);
 	// printf ("min value: %d\n", min);
 	
