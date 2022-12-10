@@ -12,50 +12,59 @@
 
 #include "push_swap.h"
 
-void sort_100(t_stack **top_a, t_stack **top_b)
-{
-	int median_a;
-	int	median_b;
-	int i;
-	int size;
-	int j;
+// void sort_all(t_all *all)
+// {
+// 	while(all->top_a)
+// 		{
+// 			if(all->top_a)
 
-	size = check_size(*top_a);
-	
-	if (size == 1)
-		return;
-	// printf("i: %d  size: %d    median: %d mean: %d\n\n", i, size, median_a, mean_a);
+// 		}
+// }
 
-	while (size > 5 )
-	{
+// void sort_100(t_stack **top_a, t_stack **top_b)
+// {
+// 	int median_a;
+// 	int	median_b;
+// 	int i;
+// 	int size;
+// 	int j;
+
+// 	size = check_size(*top_a);
 	
-	median_a = stack_medians(*top_a);
-	i = lessthan_median(*top_a, median_a);
-	size = check_size(*top_a);
-	j = size /5;
-	printf("i: %d  j: %d  size: %d    median: %d \n\n", i, j, size, median_a);
+// 	if (size == 1)
+// 		return;
+// 	// printf("i: %d  size: %d    median: %d mean: %d\n\n", i, size, median_a, mean_a);
+
+// 	while (size > 5 )
+// 	{
+	
+// 	median_a = stack_medians(*top_a);
+// 	i = lessthan_median(*top_a, median_a);
+// 	size = check_size(*top_a);
+// 	j = size /5;
+// 	printf("i: %d  j: %d  size: %d    median: %d \n\n", i, j, size, median_a);
 		
-		if ((*top_b) != NULL)
-			median_b = stack_medians(*top_b);
-		else
-			median_b = median_a / 2;
-		printf("median_b: %d\n", median_b);
-	 while (i > 0 && j > 0)
-	{
-		if ((*top_a)->data <= median_a)
-		{
-			push_a_b(top_b, top_a, 'b');
-			i--;
-			sort_b(top_b, median_b);
-		}
-		else
-			rotate_a_b(top_a, 'a');
-	j--;
-	}
-	}
-	if (check_size(*top_a) <= 5)
-		sort_lessthan_5(top_a, top_b, 'a');
-}
+// 		if ((*top_b) != NULL)
+// 			median_b = stack_medians(*top_b);
+// 		else
+// 			median_b = median_a / 2;
+// 		printf("median_b: %d\n", median_b);
+// 	 while (i > 0 && j > 0)
+// 	{
+// 		if ((*top_a)->data <= median_a)
+// 		{
+// 			push_a_b(top_b, top_a, 'b');
+// 			i--;
+// 			sort_b(top_b, median_b);
+// 		}
+// 		else
+// 			rotate_a_b(top_a, 'a');
+// 	j--;
+// 	}
+// 	}
+// 	if (check_size(*top_a) <= 5)
+// 		sort_lessthan_5(top_a, top_b, 'a');
+// }
 	
 	// size = check_size(*top_a);
 	// if (size > 5)

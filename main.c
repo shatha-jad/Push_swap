@@ -93,20 +93,20 @@ void selectionSort(int arr[], int n)
     }
 }
 
-void	parse_indexes(t_all *all)
-{
-	int	i;
-	int	d;
+// void	parse_indexes(t_all *all)
+// {
+// 	int	i;
+// 	int	d;
 
-	d = all->chunk_elem_size;
-	i = -1;
-	all->indexes = malloc(all->chunk_size * sizeof(int));
-	while(++i < all->chunk_size)
-	{
-		all->indexes[i] = all->array[d];
-		d += all->chunk_elem_size;
-	}
-}
+// 	d = all->chunk_elem_size;
+// 	i = -1;
+// 	all->indexes = malloc(all->chunk_size * sizeof(int));
+// 	while(++i < all->chunk_size)
+// 	{
+// 		all->indexes[i] = all->array[d];
+// 		d += all->chunk_elem_size;
+// 	}
+// }
 
 void	init_struct(t_all *all, t_stack **top_a, t_stack **top_b)
 {
@@ -127,7 +127,7 @@ void	init_struct(t_all *all, t_stack **top_a, t_stack **top_b)
 	}
 	selectionSort(all->array, all->stack_size);
 	all->chunk_elem_size = all->stack_size / all->chunk_size;
-	parse_indexes(all);
+	// parse_indexes(all);
 }
 
 int main(int argc, char **argv)
@@ -153,9 +153,9 @@ int main(int argc, char **argv)
 	initial_check_stack(top_a, top_b, split, args);
 
 	init_struct(&all, &top_a, &top_b);
-	i = -1;
-	while(++i < all.chunk_size)
-		printf("Chunk index %d is %d\n", i, all.indexes[i]);
+	// i = -1;
+	// while(++i < all.chunk_size)
+	// 	printf("Chunk index %d is %d\n", i, all.indexes[i]);
 	// ft_print(&all, ARRAY);
 	// parse_sort(&all);
 	// free(all.array);
@@ -167,10 +167,21 @@ int main(int argc, char **argv)
 	// median = stack_medians(top_a);
 	// mean = stack_mean(top_a);
 	// printf("size: %d   median: %d mean: %d\n\n", size, median, mean);
-
-	// if (size > 5)
-	// sort_100(&top_a, &top_b);
-
+	// t_stack **a;
+	i = 0;
+	if (all.stack_size > 5)
+		{
+			// while(all.top_a)
+			// {
+				if((all.top_a[0]->data) <= all.array[i+ all.chunk_size])
+					push_a_b(all.top_a, all.top_b, 'b');
+				i++;
+			// }
+		}
+		printf("%d\n", i);
+		ft_print(&all, CHUNK_SIZE);
+		ft_print(&all, ARRAY);
+ft_print(&all, STACK_A);
 	// reset_index(top_a);
 	// reset_index(top_b);
 	// printf("\ntop_b:\n");

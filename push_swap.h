@@ -82,6 +82,7 @@ void	sort_5(t_stack **top_a, t_stack **top_b, char s);
 void	sort(t_stack **top_a, t_stack **top_b);
 void	insert	(t_stack **top_a, t_stack **top_b, int num);
 void	sort_100(t_stack **top_a, t_stack **top_b);
+// void 	sort_all(t_all *all)
 
 // sorting utils
 int			smallest(int size, t_stack *top_a);
