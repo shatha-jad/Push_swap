@@ -93,6 +93,21 @@ void selectionSort(int arr[], int n)
     }
 }
 
+void	parse_indexes(t_all *all)
+{
+	int	i;
+	int	d;
+
+	d = all->chunk_elem_size;
+	i = -1;
+	all->indexes = malloc(all->chunk_size * sizeof(int));
+	while(++i < all->chunk_size)
+	{
+		all->indexes[i] = all->array[d];
+		d += all->chunk_elem_size;
+	}
+}
+
 void	init_struct(t_all *all, t_stack **top_a, t_stack **top_b)
 {
 	int		i;
@@ -111,6 +126,8 @@ void	init_struct(t_all *all, t_stack **top_a, t_stack **top_b)
 		tmp = tmp->next;
 	}
 	selectionSort(all->array, all->stack_size);
+	all->chunk_elem_size = all->stack_size / all->chunk_size;
+	parse_indexes(all);
 }
 
 int main(int argc, char **argv)
@@ -136,7 +153,13 @@ int main(int argc, char **argv)
 	initial_check_stack(top_a, top_b, split, args);
 
 	init_struct(&all, &top_a, &top_b);
-	ft_print(&all, ARRAY);
+	i = -1;
+	while(++i < all.chunk_size)
+		printf("Chunk index %d is %d\n", i, all.indexes[i]);
+	// ft_print(&all, ARRAY);
+	// parse_sort(&all);
+	// free(all.array);
+	// free(all.indexes);
 	// int median;
 	// int size;
 	// int mean;

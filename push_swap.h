@@ -30,7 +30,9 @@ typedef struct nodes {
 	t_stack	**top_b;
 	int		stack_size;
 	int		chunk_size;
+	int		chunk_elem_size;
 	int		*array;
+	int		*indexes;
 }t_all;
 
 #define STACK_A		1
@@ -105,4 +107,4 @@ void	*ft_calloc(size_t count, size_t size);
 char    *ft_strsjoin(int ac, char **av, char *sep);
 int		ft_strlens(int ac, char **av, char *sep);
 size_t	ft_strlen(const char *str);
-#endifcommit 
+#endif
