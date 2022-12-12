@@ -13,7 +13,7 @@
 
 NAME    = push_swap
 CC      = gcc
-CFLAGS  = -g3 -Wall -Wextra -Werror
+CFLAGS  = -g3 
 RM      = rm -f
 
 SRCS	= main.c ft_atoi.c ft_split.c parsing.c sort_lessthan_5.c sort_utils.c parsing_utils.c\

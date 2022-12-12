@@ -28,7 +28,8 @@ typedef struct node {
 typedef struct nodes {
 	t_stack	**top_a;
 	t_stack	**top_b;
-	int		stack_size;
+	int		stack_size_a;
+	int		stack_size_b;
 	int		chunk_size;
 	int		chunk_elem_size;
 	int		*array;
@@ -66,7 +67,7 @@ int		count_words(char const *s, char c);
 // Operations
 void	swap_a_b(t_stack *top_a, char s);
 void	ss(t_stack **top_a, t_stack **top_b);
-void	push_a_b(t_stack **list, t_stack **node, char s);
+void	push_a_b(t_stack **list, t_stack **node, char s, t_all *all);
 void	rotate_a_b(t_stack **top_a, char r);
 void	rr(t_stack **top_a, t_stack **top_b);
 void	revrotate_a_b(t_stack **top_a, char s);
@@ -96,6 +97,7 @@ void 		sort_b( t_stack **top_b, int median_b);
 t_stack*	bubbleSort(t_stack** head, int count);
 t_stack*	swap(t_stack* ptr1, t_stack* ptr2);
 t_stack*	largest_5(t_stack **head);
+void	ft_print(t_all *all, int flag);
 
 // free
 void	ft_free(char **tab);

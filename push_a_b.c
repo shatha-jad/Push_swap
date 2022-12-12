@@ -12,9 +12,7 @@
 
 #include "push_swap.h"
 
-//
-
-void	push_a_b(t_stack **list, t_stack **node, char s)
+void	push_a_b(t_stack **list, t_stack **node, char s, t_all *all)
 {
 	t_stack	*tmp;
 	
@@ -24,8 +22,17 @@ void	push_a_b(t_stack **list, t_stack **node, char s)
 	*node = (*node)->next;
 	tmp->next = *list;
 	*list = tmp;
+
 	if (s == 'a')
-		write (1, "pa\n", 3);
+		{
+			all->stack_size_a++;
+			all->stack_size_b--;
+			write (1, "pa\n", 3);
+		}
 	else if (s == 'b')
+	{
+		all->stack_size_a--;
+		all->stack_size_b++;
 		write (1, "pb\n", 3);
+	}
 }
