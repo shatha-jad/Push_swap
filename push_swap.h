@@ -33,6 +33,7 @@ typedef struct nodes {
 	int		chunk_elem_size;
 	int		*array;
 	int		*indexes;
+	// struct node;
 }t_all;
 
 #define STACK_A		1
@@ -81,8 +82,8 @@ void	sort_5(t_stack **top_a, t_stack **top_b, char s);
 // Sorting
 void	sort(t_stack **top_a, t_stack **top_b);
 void	insert	(t_stack **top_a, t_stack **top_b, int num);
-void	sort_100(t_stack **top_a, t_stack **top_b);
-// void 	sort_all(t_all *all)
+// void	sort_100(t_stack **top_a, t_stack **top_b, t_all *all);
+void 	sort_all(t_all *all);
 
 // sorting utils
 int			smallest(int size, t_stack *top_a);

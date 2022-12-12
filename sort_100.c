@@ -12,15 +12,31 @@
 
 #include "push_swap.h"
 
-// void sort_all(t_all *all)
-// {
-// 	while(all->top_a)
-// 		{
-// 			if(all->top_a)
+void	sort_all(t_all *all)
+{
+	int	i;
 
-// 		}
-// }
-
+	i = 0;
+	if (all->stack_size > 5)
+		{
+			while(all->top_a)
+			{
+				if ((i + all->chunk_size) > all->stack_size)
+					all->stack_size--;
+				if((*all->top_a)->data <= all->array[i])
+					push_a_b(all->top_b, all->top_a, 'b');
+				else if((*all->top_a)->data <= all->array[i + all->chunk_size])
+					{
+						push_a_b(all->top_b, all->top_a, 'b');
+						rotate_a_b(all->top_b, 'b');
+					}
+				else 
+					rotate_a_b(all->top_b, 'b');
+				i++;
+				*all->top_a = (*all->top_a)->next;
+			}
+}
+}
 // void sort_100(t_stack **top_a, t_stack **top_b)
 // {
 // 	int median_a;

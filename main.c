@@ -160,28 +160,36 @@ int main(int argc, char **argv)
 	// parse_sort(&all);
 	// free(all.array);
 	// free(all.indexes);
-	// int median;
+	// int median;s
 	// int size;
 	// int mean;
 	// size = check_size(top_a);
 	// median = stack_medians(top_a);
 	// mean = stack_mean(top_a);
 	// printf("size: %d   median: %d mean: %d\n\n", size, median, mean);
-	// t_stack **a;
-	i = 0;
-	if (all.stack_size > 5)
-		{
-			// while(all.top_a)
-			// {
-				if((all.top_a[0]->data) <= all.array[i+ all.chunk_size])
-					push_a_b(all.top_a, all.top_b, 'b');
-				i++;
-			// }
-		}
-		printf("%d\n", i);
-		ft_print(&all, CHUNK_SIZE);
-		ft_print(&all, ARRAY);
-ft_print(&all, STACK_A);
+// sort_100(top_a, top_b, &all);
+	// i = 0;
+			ft_print(&all, STACK_SIZE);
+			ft_print(&all, CHUNK_SIZE);
+
+	sort_all(&all);
+	// if (all.stack_size > 5)
+	// 	{
+	// 		// while(all.top_a)
+	// 		// {
+	// 			if((*all.top_a)->data <= all.array[i+ all.chunk_size])
+	// 				{
+	// 					printf("HI\n");
+	// 					push_a_b(all.top_b, all.top_a, 'b');
+	// 				}
+	// 			i++;
+	// 		// }
+		// }
+		// all.top_a = ;
+		// printf("iteration %d\n", i);
+// 		ft_print(&all, CHUNK_SIZE);
+// 		ft_print(&all, STACK_SIZE);
+// printf("STACK B: %d", ((*all.top_b)->data));
 	// reset_index(top_a);
 	// reset_index(top_b);
 	// printf("\ntop_b:\n");
