@@ -33,7 +33,8 @@ typedef struct nodes {
 	int		chunk_size;
 	int		chunk_elem_size;
 	int		*array;
-	int		*indexes;
+	int		*index_a;
+	int		*index_b;
 	// struct node;
 }t_all;
 

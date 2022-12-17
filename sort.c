@@ -15,34 +15,34 @@
 // #include <stdio.h>
 // #include <stdlib.h>
 
-void sort(t_stack **top_a, t_stack **top_b)
-{
-	int median_data;
-	int median_index;
-	int max;
-	// t_stack *tmp;
-	// t_stack *tmp2;
+// void sort(t_stack **top_a, t_stack **top_b)
+// {
+// 	int median_data;
+// 	int median_index;
+// 	int max;
+// 	// t_stack *tmp;
+// 	// t_stack *tmp2;
 
-	// tmp = NULL;
-	median_data = stack_median(*top_a, check_size(*top_a), 'd');
-	median_index = stack_median(*top_a, check_size(*top_a), 'i');
+// 	// tmp = NULL;
+// 	median_data = stack_median(*top_a, check_size(*top_a), 'd');
+// 	median_index = stack_median(*top_a, check_size(*top_a), 'i');
 
-	printf("Data at median: %d\nIndex of median: %d\n", median_data, median_index);
-	while ((*top_a)->index < median_index)
-		push_a_b(top_b, top_a, 'a');
-	// max = largest(check_size(*top_b), *top_b);
-	// printf("max: %d\ntop_b: %d\n", max, (*top_b)->data);
-	while((*top_b) != NULL)
-	{
-		max = largest(check_size(*top_b), *top_b);
-		while ((*top_b)->data != max)
-		{
-			rotate_a_b(top_b, 'b');
-		}
-			push_a_b(top_a,top_b,'a');
-			// printf("top_a: %d\ntop_b: %d\n",(*top_a)->data, (*top_b)->data);
-	}
-}
+// 	printf("Data at median: %d\nIndex of median: %d\n", median_data, median_index);
+// 	while ((*top_a)->index < median_index)
+// 		push_a_b(top_b, top_a, 'a');
+// 	// max = largest(check_size(*top_b), *top_b);
+// 	// printf("max: %d\ntop_b: %d\n", max, (*top_b)->data);
+// 	while((*top_b) != NULL)
+// 	{
+// 		max = largest(check_size(*top_b), *top_b);
+// 		while ((*top_b)->data != max)
+// 		{
+// 			rotate_a_b(top_b, 'b');
+// 		}
+// 			push_a_b(top_a,top_b,'a');
+// 			// printf("top_a: %d\ntop_b: %d\n",(*top_a)->data, (*top_b)->data);
+// 	}
+// }
 
 // #include <alloc.h>
 // Part of Cosmos by OpenGenus Foundation

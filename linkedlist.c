@@ -32,10 +32,7 @@ void lst_add(t_stack **data, int num)
 		tmp->next = new;
 	}
 }
-// **splitted;
-// while(splitted[i] != NULL)
-// 	i++;
-// NULL;
+
 int main(int ac, char **av)
 {
 	t_stack *lst = NULL;
@@ -45,11 +42,6 @@ int main(int ac, char **av)
 		lst_add(&lst, atoi(av[i]));
 		i++;
 	}
-	// lst_add(&lst, num);
-	// lst_add(&lst, 3);
-	// lst_add(&lst, 4);
-	// lst_add(&lst, 5);
-	// lst_add(&lst, 6);
 	while (lst)
 	{
 		printf("%d\n", lst->data);

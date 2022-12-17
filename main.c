@@ -120,6 +120,8 @@ void	init_struct(t_all *all, t_stack **top_a, t_stack **top_b)
 	all->chunk_size =  get_chunk_size(all);
 	all->array = malloc(all->stack_size_a * sizeof(int));
 	all->stack_size_b = 0;
+	// all->index_a = top_a->index;
+
 	tmp = *all->top_a;
 	while(++i < all->stack_size_a && tmp != NULL)
 	{

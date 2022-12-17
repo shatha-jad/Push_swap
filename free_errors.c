@@ -61,5 +61,4 @@ void	error_msg(int i)
 	if (i == 1)
 		printf("%s\n", "ERROR");
 	exit(0);
-	// return ;
 }

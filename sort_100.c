@@ -30,7 +30,7 @@ void	sort_all(t_all *all)
 						// *all->top_a = (*all->top_a)->next;
 						i++;
 					}
-				else if((*all->top_a)->data <= all->array[i + all->chunk_size])
+				else if(((*all->top_a)->data <= all->array[i + all->chunk_size]) && ((*all->top_a)->data != largest(all->stack_size_b, *all->top_a)))
 					{
 						push_a_b(all->top_b, all->top_a, 'b', all);
 						rotate_a_b(all->top_b, 'b');
@@ -41,10 +41,16 @@ void	sort_all(t_all *all)
 					rotate_a_b(all->top_a, 'a');
 			}
 		}
-		// printf("%d \n %d\n", all->stack_size_a, all->stack_size_b);
+		
 		// while ((*all->top_b))
 		// {
-		// 	rotate_max_from_b_and_push_to_a;
+		// 	rotate_max_from_b_and_push_to_a,_use middle_for_reference;
+		int largest_b;
+		largest_b = largest(all->stack_size_b, *all->top_b);
+	
+		printf("%d\n%d\n%d\n%d\n%d\n", all->stack_size_a, all->stack_size_b, (*all->top_a)->data, largest_b, (*all->top_a)->index);
+
+
 		// }
 }
 // void sort_100(t_stack **top_a, t_stack **top_b)
