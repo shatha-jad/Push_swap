@@ -97,7 +97,7 @@ void sort_4(t_stack **top_a, t_stack **top_b, char s)
 	}
 	// if (top_a->data == min)
 	// {
-		push_a_b(top_b, top_a, 'b');
+		push_a_b(top_b, top_a, 'b'zz );
 		sort_3(top_a, s);
 		push_a_b(top_a, top_b, s);
 	// }

@@ -13,13 +13,13 @@
 
 #include "push_swap.h"
 
-void initial_check_stack (t_stack *top_a, t_stack *top_b, char **split, char *args)
+void initial_check_stack (char **split, char *args, t_all *all)
 {
-	check_dup(top_a, split, args);
-	if (check_sort(top_a) == 0)
-		free_error_stack(top_a, split, args, 0);
-	if (check_size(top_a) <= 5)
-		sort_lessthan_5(&top_a, &top_b, 'a');
+	check_dup(all->top_a, split, args);
+	if (check_sort(all->top_a) == 0)
+		free_error_stack(all->top_a, split, args, 0);
+	if (check_size(all->top_a) <= 5)
+		sort_lessthan_5(&all->top_a, 'a');
 }
 
 int	check_sort(t_stack *top_a)

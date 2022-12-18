@@ -129,6 +129,7 @@ void	init_struct(t_all *all, t_stack **top_a, t_stack **top_b)
 	selectionSort(all->array, all->stack_size_a);
 	all->chunk_elem_size = all->stack_size_a / all->chunk_size;
 	// parse_indexes(all);
+	
 }
 
 int main(int argc, char **argv)
@@ -151,9 +152,9 @@ int main(int argc, char **argv)
 		exit(0);
 	while (split[i])
 		top_a = add_at_end(top_a, ft_atoi(split[i++], split, top_a, args));
-	initial_check_stack(top_a, top_b, split, args);
-
 	init_struct(&all, &top_a, &top_b);
+	initial_check_stack( split, args, &all);
+
 	// i = -1;
 	// while(++i < all.chunk_size)
 	// 	printf("Chunk index %d is %d\n", i, all.indexes[i]);
