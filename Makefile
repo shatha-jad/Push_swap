@@ -18,7 +18,7 @@ RM      = rm -f
 
 SRCS	= main.c ft_atoi.c ft_split.c parsing.c sort_lessthan_5.c sort_utils.c parsing_utils.c\
 			parsing_utils2.c swap_a.c push_a_b.c rotate_a_b.c revrotate_a_b.c ss_rr_rrr.c\
-			initial_check_stack.c free_errors.c sort_100.c 
+			initial_check_stack.c free_errors.c sort_100.c selection_sort.c
 
 OBJS    = $(SRCS:.c=.o)
 
