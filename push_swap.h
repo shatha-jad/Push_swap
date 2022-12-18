@@ -33,7 +33,8 @@ typedef struct nodes {
 	int		chunk_size;
 	int		chunk_elem_size;
 	int		*array;
-	int		*indexes;
+	int		*index_a;
+	int		*index_b;
 	// struct node;
 }t_all;
 
@@ -54,7 +55,7 @@ void	reset_index(t_stack *top_a);
 // void stack_b(t_stack **top_b, t_stack *top_a);
 int		check_sort(t_stack *top_a);
 int		check_size(t_stack *top_a);
-void	initial_check_stack (char **split, char *args, t_all *all);
+void	initial_check_stack (t_all *all, char **split, char *args);
 // void	check_size(t_stack	*arg);
 
 // Error handling
@@ -74,14 +75,14 @@ void	revrotate_a_b(t_stack **top_a, char s);
 void	rrr(t_stack **top_a, t_stack **top_b);
 
 // Sort "hard coding"
-void	sort_lessthan_5(char s, t_all *all);
+void	sort_lessthan_5(t_all *all, char s);
 void	sort_2(t_stack **top_a, char s);
 void	sort_3(t_stack **top_a, char s);
-void	sort_4(t_stack **top_a, t_stack **top_b, char s, t_all *all);
-void	sort_5(t_stack **top_a, t_stack **top_b, char s, t_all *all);
+void	sort_4(t_all *all, char s);
+void	sort_5(t_all *all, char s);
 
 // Sorting
-void	sort(t_stack **top_a, t_stack **top_b);
+// void	sort(t_stack **top_a, t_stack **top_b);
 void	insert	(t_stack **top_a, t_stack **top_b, int num);
 // void	sort_100(t_stack **top_a, t_stack **top_b, t_all *all);
 void 	sort_all(t_all *all);
@@ -93,7 +94,7 @@ int			stack_median(t_stack *stack, int size, char c);
 int			stack_medians(t_stack *stack);
 int			lessthan_median (t_stack *stack, int median);
 int			stack_mean(t_stack *stack);
-// void 		sort_b( t_stack **top_b, int median_b);
+void 		sort_b( t_stack **top_b, int median_b);
 t_stack*	bubbleSort(t_stack** head, int count);
 t_stack*	swap(t_stack* ptr1, t_stack* ptr2);
 t_stack*	largest_5(t_stack **head);

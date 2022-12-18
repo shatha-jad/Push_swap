@@ -27,12 +27,14 @@ void	sort_all(t_all *all)
 				if((*all->top_a)->data <= all->array[i])
 					{
 						push_a_b(all->top_b, all->top_a, 'b', all);
+						// push_a_b(all->top_b, all->top_a, 'b');
 						// *all->top_a = (*all->top_a)->next;
 						i++;
 					}
 				else if((*all->top_a)->data <= all->array[i + all->chunk_size])
 					{
 						push_a_b(all->top_b, all->top_a, 'b', all);
+						// push_a_b(all->top_b, all->top_a, 'b');
 						rotate_a_b(all->top_b, 'b');
 						// *all->top_a = (*all->top_a)->next;
 						i++;
@@ -41,12 +43,16 @@ void	sort_all(t_all *all)
 					rotate_a_b(all->top_a, 'a');
 			}
 		}
-		// printf("%d \n %d\n", all->stack_size_a, all->stack_size_b);
+		reset_index(*all->top_b);
+		printf("%d \n%d \n%d \n%d\n", all->stack_size_a, all->stack_size_b, (*all->top_a)->index, (*all->top_b)->index);
 		// while ((*all->top_b))
 		// {
 		// 	rotate_max_from_b_and_push_to_a;
+		
 		// }
 }
+
+
 // void sort_100(t_stack **top_a, t_stack **top_b)
 // {
 // 	int median_a;

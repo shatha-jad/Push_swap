@@ -120,6 +120,8 @@ void	init_struct(t_all *all, t_stack **top_a, t_stack **top_b)
 	all->chunk_size =  get_chunk_size(all);
 	all->array = malloc(all->stack_size_a * sizeof(int));
 	all->stack_size_b = 0;
+	// all->index_a = top_a->index;
+
 	tmp = *all->top_a;
 	while(++i < all->stack_size_a && tmp != NULL)
 	{
@@ -129,7 +131,6 @@ void	init_struct(t_all *all, t_stack **top_a, t_stack **top_b)
 	selectionSort(all->array, all->stack_size_a);
 	all->chunk_elem_size = all->stack_size_a / all->chunk_size;
 	// parse_indexes(all);
-	
 }
 
 int main(int argc, char **argv)
@@ -152,27 +153,9 @@ int main(int argc, char **argv)
 		exit(0);
 	while (split[i])
 		top_a = add_at_end(top_a, ft_atoi(split[i++], split, top_a, args));
-	init_struct(&all, &top_a, &top_b);
-	initial_check_stack( split, args, &all);
 
-	// i = -1;
-	// while(++i < all.chunk_size)
-	// 	printf("Chunk index %d is %d\n", i, all.indexes[i]);
-	// ft_print(&all, ARRAY);
-	// parse_sort(&all);
-	// free(all.array);
-	// free(all.indexes);
-	// int median;s
-	// int size;
-	// int mean;
-	// size = check_size(top_a);
-	// median = stack_medians(top_a);
-	// mean = stack_mean(top_a);
-	// printf("size: %d   median: %d mean: %d\n\n", size, median, mean);
-// sort_100(top_a, top_b, &all);#define	STACK
-	// i = 0;
-			// ft_print(&all, stack_size_a);
-			// ft_print(&all, CHUNK_SIZE);
+	init_struct(&all, &top_a, &top_b);
+	initial_check_stack(&all, split, args);
 
 	sort_all(&all);
 

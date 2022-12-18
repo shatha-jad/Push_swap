@@ -12,16 +12,16 @@
 
 # include "push_swap.h"
 
-void sort_lessthan_5(t_stack **top_a, t_stack **top_b, char s)
+void sort_lessthan_5(t_all *all, char s)
 {
-	if (check_size(*top_a) == 2)
-		sort_2(top_a, s);
-	else if (check_size(*top_a) == 3)
-		sort_3(top_a, s);
-	else if (check_size(*top_a) == 4)
-		sort_4(top_a, top_b, s);
-	else if (check_size(*top_a) == 5)
-		sort_5(top_a, top_b, s);
+	if (check_size(*all->top_a) == 2)
+		sort_2(all->top_a, s);
+	else if (all->stack_size_a == 3)
+		sort_3(all->top_a, s);
+	else if (all->stack_size_a == 4)
+		sort_4(all, s);
+	else if (all->stack_size_a == 5)
+		sort_5(all, s);
 }
 
 void sort_2(t_stack **top_a, char s)
@@ -77,56 +77,39 @@ void sort_3(t_stack **top_a, char s)
 	}
 }
 
-void sort_4(t_stack **top_a, t_stack **top_b, char s)
+void sort_4(t_all *all, char s)
 {
-	if (check_sort(*top_a)  == 0)
+	if (check_sort(*all->top_a)  == 0)
 		return ;
 	
 	int min;
 
-	min = smallest(check_size(*top_a), *top_a);
-	// printf ("min value: %d\n", min);
-	
-	while ((*top_a)->next != NULL )
+	min = smallest(all->stack_size_a, *all->top_a);	
+	while ((*all->top_a)->next != NULL )
 	{
-		rotate_a_b(top_a, s);
-		// printf("sort 4: %d\n", (*top_a)->data);
-		
-		if ((*top_a)->data == min)
+		rotate_a_b(all->top_a, s);	
+		if ((*all->top_a)->data == min)
 		break;
 	}
-	// if (top_a->data == min)
-	// {
-		push_a_b(top_b, top_a, 'b'zz );
-		sort_3(top_a, s);
-		push_a_b(top_a, top_b, s);
-	// }
+		push_a_b(all->top_b, all->top_a, 'b', all);
+		sort_3(all->top_a, s);
+		push_a_b(all->top_a, all->top_b, s, all);
 }
 
-void sort_5(t_stack **top_a, t_stack **top_b, char s)
+void sort_5(t_all *all, char s)
 {
-	if (check_sort(*top_a)  == 0)
+	if (check_sort(*all->top_a)  == 0)
 		return ;
-	
-	// t_stack	*tmp;
 	int min;
-	// int 
-	// tmp = *top_a;
-	min = smallest(check_size(*top_a), *top_a);
-	// printf ("min value: %d\n", min);
-	
-	while ((*top_a)->next != NULL )
+
+	min = smallest(all->stack_size_a, *all->top_a);	
+	while ((*all->top_a)->next != NULL )
 	{
-		rotate_a_b(top_a, s);
-		// printf("sort 4: %d\n", (*top_a)->data);
-		
-		if ((*top_a)->data == min)
+		rotate_a_b(all->top_a, s);		
+		if ((*all->top_a)->data == min)
 		break;
 	}
-	// if (top_a->data == min)
-	// {
-		push_a_b(top_b, top_a, 'b');
-		sort_4(top_a, top_b, s);
-		push_a_b(top_a,top_b, s);
-	// }
+		push_a_b(all->top_b, all->top_a, 'b', all);
+		sort_4(all, s);
+		push_a_b(all->top_a, all->top_b, s, all);
 }
