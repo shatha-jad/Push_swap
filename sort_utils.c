@@ -50,6 +50,32 @@ int	largest(int size, t_stack *top_a)
 	return (largest);
 }
 
+int	largest_index(int size, t_stack *top_a)
+{
+	int	i;
+	int	largest_index;
+	int	largest;
+	t_stack *tmp;
+	
+	tmp = top_a;
+	i = 0;
+	largest = top_a->data;
+	printf("index in function: %d\n", tmp->index);
+	while (i < size && tmp->next)
+	{
+		if (largest < tmp->data)
+		{
+			largest = tmp->data;
+			largest_index = tmp->index;
+		}
+		tmp = tmp->next;
+		i++;
+	}
+printf("index in end function: %d\n", tmp->index);
+
+	return (largest_index);
+}
+
 // int stack_medians(t_stack *stack)
 // {
 // 	int	median;

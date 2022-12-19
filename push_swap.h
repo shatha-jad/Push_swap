@@ -90,6 +90,7 @@ void 	sort_all(t_all *all);
 // sorting utils
 int			smallest(int size, t_stack *top_a);
 int			largest(int size, t_stack *top_a);
+int			largest_index(int size, t_stack *top_a);
 int			stack_median(t_stack *stack, int size, char c);
 int			stack_medians(t_stack *stack);
 int			lessthan_median (t_stack *stack, int median);

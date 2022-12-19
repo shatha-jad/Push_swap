@@ -34,4 +34,5 @@ void	rotate_a_b(t_stack **top_a, char s)
 	else if (s == 'b')
 		write (1, "rb\n", 3);
 	*top_a = tmp2;
+	reset_index(*top_a);
 }

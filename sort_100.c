@@ -38,28 +38,42 @@ void	sort_all(t_all *all)
 					rotate_a_b(all->top_a, 'a');
 			}
 		}
-		reset_index(*all->top_b);
-		printf("%d \n%d \n%d \n%d\n", all->stack_size_a, all->stack_size_b, (*all->top_a)->index, (*all->top_b)->index);
+	// 	reset_index(*all->top_b);
+		printf("%d \n%d \n%d \n%d\nLargest: %d\n largest_index:%d\n", all->stack_size_a, all->stack_size_b, (*all->top_a)->index, (*all->top_b)->index,largest(all->stack_size_b, *all->top_b), largest_index(all->stack_size_b, *all->top_b) );
+	// while (*all->top_b)
+	// {
+	// 	if (*all->index_b == largest
+	// }
+
 			t_stack	*tmp;
 
 			tmp = *all->top_b;
-		while ((*all->top_b)->next)
-		{
-			*all->top_b = tmp;
-			// rotate_max_from_b_and_push_to_a;
-			printf("data at B: %d\nLARGEST AT B: %d\n", tmp->data, largest(all->stack_size_b, *all->top_b));
-			while((*all->top_b)->next)
-			{
-			printf("HI\n");
-			printf("tmp: %d\n", tmp->data);
-			// if ((*all->top_b)->data == largest(all->stack_size_b, *all->top_b))
-			// {
-			// 		printf("Hello\n");
-			// 		push_a_b(all->top_a, all->top_b, 'a', all);
-			// }
-			// else
-			*all->top_b = (*all->top_b)->next;
-			}
-		}
-		push_a_b(all->top_a, all->top_b, 'a', all);
+		// printf("tmp: %d top_b:%d\n", tmp->data, (*all->top_b)->data);
+		// *all->top_b = (*all->top_b)->next;
+		// while ((*all->top_b)->next)
+		// {
+		// 	push_a_b(all->top_a, all->top_b, 'a', all);
+		// }
+		// printf("tmp: %d top_b:%d\n", tmp->data, (*all->top_b)->data);
+		// *all->top_b = tmp;
+		// printf("tmp: %d top_b:%d\n", tmp->data, (*all->top_b)->data);
+		
+		// while ((*all->top_b)->next)
+		// {
+		// 	*all->top_b = tmp;
+		// 	// rotate_max_from_b_and_push_to_a;
+		// 	printf("data at B: %d\nLARGEST AT B: %d\n", tmp->data, largest(all->stack_size_b, *all->top_b));
+		// 	while((*all->top_b)->next)
+		// 	{
+		// 	printf("HI\n");
+		// 	if ((*all->top_b)->data == largest(all->stack_size_b, *all->top_b))
+		// 	{
+		// 			printf("Hello\n");
+		// 			push_a_b(all->top_a, all->top_b, 'a', all);
+		// 	}
+		// 	else
+		// 	*all->top_b = (*all->top_b)->next;
+		// 	}
+		// }
+		// push_a_b(all->top_a, all->top_b, 'a', all);
 }

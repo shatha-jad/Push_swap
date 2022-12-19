@@ -22,6 +22,9 @@ void	rr(t_stack **top_a, t_stack **top_b)
 {
 	rotate_a_b(top_a, 's');
 	rotate_a_b(top_b, 's');
+	reset_index(*top_b);
+	reset_index(*top_a);
+
 }
 
 void	rrr(t_stack **top_a, t_stack **top_b)

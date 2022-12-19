@@ -35,4 +35,6 @@ void	push_a_b(t_stack **list, t_stack **node, char s, t_all *all)
 		all->stack_size_b++;
 		write (1, "pb\n", 3);
 	}
+		reset_index(*all->top_b);
+		reset_index(*all->top_a);
 }
