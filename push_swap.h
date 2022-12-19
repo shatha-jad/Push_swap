@@ -79,6 +79,7 @@ void	sort_2(t_stack **top_a, char s);
 void	sort_3(t_stack **top_a, char s);
 void	sort_4(t_all *all, char s);
 void	sort_5(t_all *all, char s);
+void selectionSort(int arr[], int n);
 
 // Sorting
 // void	sort(t_stack **top_a, t_stack **top_b);
