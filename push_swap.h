@@ -6,7 +6,7 @@
 /*   By: sjadalla <sjadalla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 21:01:58 by sjadalla          #+#    #+#             */
-/*   Updated: 2022/12/26 20:41:46 by sjadalla         ###   ########.fr       */
+/*   Updated: 2022/12/27 19:05:21 by sjadalla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,14 +29,18 @@ typedef struct nodes {
 	t_stack	**top_a;
 	t_stack	**top_b;
 	int		stack_size_a;
+	int		stack_size;
 	int		stack_size_b;
 	int		chunk_size;
 	int		chunk_elem_size;
 	int		*array;
+	int		*array_b;
 	int		*index_a;
 	int		*index_b;
-	int		max_a;
-	int		min_a;
+	int		max_b;
+	int		min_b;
+	char	**split;
+	char	*args;
 }t_all;
 
 # define STACK_A	1
@@ -79,11 +83,11 @@ void	rrr(t_stack **top_a, t_stack **top_b);
 void	sort_lessthan_5(t_all *all, char s);
 void	sort_2(t_stack **top_a, char s);
 void	sort_3(t_stack **top_a, char s);
-void	tmp_min(t_stack **top_a, char s);
-void	tmp_max_tmp2_min(t_stack **top_a, char s);
-void	tmp2_min(t_stack **top_a, char s);
-void	tmp_max(t_stack **top_a, char s);
-void	tmp2_max(t_stack **top_a, char s);
+// void	tmp_min(t_stack **top_a, char s);
+// void	tmp_max_tmp2_min(t_stack **top_a, char s);
+// void	tmp2_min(t_stack **top_a, char s);
+// void	tmp_max(t_stack **top_a, char s);
+// void	tmp2_max(t_stack **top_a, char s);
 void	sort_4(t_all *all, char s);
 void	sort_5(t_all *all, char s);
 void	selectionsort(int arr[], int n);

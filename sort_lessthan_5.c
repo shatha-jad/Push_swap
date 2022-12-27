@@ -6,7 +6,7 @@
 /*   By: sjadalla <sjadalla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 16:04:13 by sjadalla          #+#    #+#             */
-/*   Updated: 2022/12/26 20:43:59 by sjadalla         ###   ########.fr       */
+/*   Updated: 2022/12/27 14:35:42 by sjadalla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,31 +32,33 @@ void	sort_2(t_stack **top_a, char s)
 		swap_a_b(*top_a, s);
 }
 
-void	sort_3(t_stack **top_a, char s)
+void	sort_3(t_stack **a, char s)
 {
-	int		max;
-	int		min;
-	t_stack	*tmp;
-	t_stack	*tmp2;
+	int	one;
+	int	two;
+	int	three;
 
-	tmp = *top_a;
-	tmp2 = tmp;
-	while (tmp2->next != NULL)
-		tmp2 = tmp2->next;
-	max = largest(3, *top_a);
-	min = smallest(3, *top_a);
-	if (check_sort(*top_a) == 0)
+	one = (*a)->data;
+	two = (*a)->next->data;
+	three = (*a)->next->next->data;
+	if (check_sort(*a) == 0)
 		return ;
-	if (tmp->data == max && tmp2->data == min)
-		tmp_max_tmp2_min(top_a, s);
-	else if (tmp->data == max)
-		tmp_max(top_a, s);
-	else if (tmp->data == min)
-		tmp_min(top_a, s);
-	else if (tmp2->data == max)
-		tmp2_max(top_a, s);
-	else if (tmp2->data == min)
-		tmp2_min(top_a, s);
+	if (one > two && one > three && two > three)
+	{
+		rotate_a_b(a, s);
+		swap_a_b(*a, s);
+	}
+	else if (one > two && one > three && three > two)
+		rotate_a_b(a, s);
+	else if (two > one && two > three && one > three)
+		revrotate_a_b(a, s);
+	else if (two > one && two > three && three > one)
+	{
+		swap_a_b(*a, s);
+		rotate_a_b(a, s);
+	}
+	else if (three > one && three > two && one > two)
+		swap_a_b(*a, s);
 }
 
 void	sort_4(t_all *all, char s)

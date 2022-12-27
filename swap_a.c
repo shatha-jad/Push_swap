@@ -6,7 +6,7 @@
 /*   By: sjadalla <sjadalla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/22 16:55:23 by aalaghba          #+#    #+#             */
-/*   Updated: 2022/06/11 21:10:30 by sjadalla         ###   ########.fr       */
+/*   Updated: 2022/12/27 15:40:26 by sjadalla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,4 +25,5 @@ void	swap_a_b(t_stack *top_a, char s)
 		write (1, "sa\n", 3);
 	else if (s == 'b')
 		write (1, "sb\n", 3);
+	reset_index(top_a);
 }

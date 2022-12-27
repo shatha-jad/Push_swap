@@ -6,11 +6,45 @@
 /*   By: sjadalla <sjadalla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 21:11:09 by sjadalla          #+#    #+#             */
-/*   Updated: 2022/12/27 14:24:54 by sjadalla         ###   ########.fr       */
+/*   Updated: 2022/12/27 19:06:33 by sjadalla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+int	find_alg(t_stack *top_b, int size)
+{
+	int	j;
+	int	max;
+
+	j = 0;
+	max = largest(size, top_b);
+	while (top_b && max != top_b->data)
+	{
+		j++;
+		top_b = top_b->next;
+	}
+	if (j < size / 2)
+		return (1);
+	else
+		return (0);
+}
+
+void	push_back(t_all *all)
+{
+	int	i;
+
+	i = 0;
+	while (*all->top_b)
+	{
+		if ((*all->top_b)->data == largest(all->stack_size_b, *all->top_b))
+			push_a_b(all->top_a, all->top_b, 'a', all);
+		else if (find_alg(*all->top_b, all->stack_size_b))
+			rotate_a_b(all->top_b, 'b');
+		else if (!find_alg(*all->top_b, all->stack_size_b))
+			revrotate_a_b(all->top_b, 'b');
+	}
+}
 
 void	sort_all(t_all *all)
 {
@@ -19,61 +53,24 @@ void	sort_all(t_all *all)
 	i = 0;
 	if (all->stack_size_a > 5)
 	{
-		while ((*all->top_a)->next)
+		while (all->stack_size_a)
 		{
-			if ((i + all->chunk_size) > all->stack_size_a)
+			if ((i + all->chunk_size) > all->stack_size)
 				all->chunk_size--;
-			if ((*all->top_a)->data <= all->array[i])
-			{
-				push_a_b(all->top_b, all->top_a, 'b', all);
-				i++;
-			}
 			else if ((*all->top_a)->data <= all->array[i + all->chunk_size])
 			{
 				push_a_b(all->top_b, all->top_a, 'b', all);
 				rotate_a_b(all->top_b, 'b');
 				i++;
 			}
+			if ((*all->top_a)->data <= all->array[i])
+			{
+				push_a_b(all->top_b, all->top_a, 'b', all);
+				i++;
+			}
 			else
 				rotate_a_b(all->top_a, 'a');
 		}
 	}
-	// 	reset_index(*all->top_b);
-	printf("%d \n%d \n%d \n%d\nLargest: %d\n largest_index:%d\n", all->stack_size_a, all->stack_size_b, (*all->top_a)->index, (*all->top_b)->index,largest(all->stack_size_b, *all->top_b), largest_index(all->stack_size_b, *all->top_b) );
-	while (*all->top_b)
-	{
-		if (*all->index_b == largest)
-			printf("HI");
-	}
-	t_stack	*tmp;
-
-	// tmp = *all->top_b;
-		// printf("tmp: %d top_b:%d\n", tmp->data, (*all->top_b)->data);
-		// *all->top_b = (*all->top_b)->next;
-		// while ((*all->top_b)->next)
-		// {
-		// 	push_a_b(all->top_a, all->top_b, 'a', all);
-		// }
-		// printf("tmp: %d top_b:%d\n", tmp->data, (*all->top_b)->data);
-		// *all->top_b = tmp;
-		// printf("tmp: %d top_b:%d\n", tmp->data, (*all->top_b)->data);
-		
-		// while ((*all->top_b)->next)
-		// {
-		// 	*all->top_b = tmp;
-		// 	// rotate_max_from_b_and_push_to_a;
-		// 	printf("data at B: %d\nLARGEST AT B: %d\n", tmp->data, largest(all->stack_size_b, *all->top_b));
-		// 	while((*all->top_b)->next)
-		// 	{
-		// 	printf("HI\n");
-		// 	if ((*all->top_b)->data == largest(all->stack_size_b, *all->top_b))
-		// 	{
-		// 			printf("Hello\n");
-		// 			push_a_b(all->top_a, all->top_b, 'a', all);
-		// 	}
-		// 	else
-		// 	*all->top_b = (*all->top_b)->next;
-		// 	}
-		// }
-		// push_a_b(all->top_a, all->top_b, 'a', all);
+	push_back(all);
 }

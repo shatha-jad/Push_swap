@@ -6,7 +6,7 @@
 /*   By: sjadalla <sjadalla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 18:53:09 by sjadalla          #+#    #+#             */
-/*   Updated: 2022/12/26 20:28:05 by sjadalla         ###   ########.fr       */
+/*   Updated: 2022/12/27 19:06:17 by sjadalla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,70 +14,41 @@
 
 int	get_chunk_size(t_all *all)
 {
-	if (all->stack_size_a > 5 && all->stack_size_a < 20)
-		return (2);
-	else if (all->stack_size_a >= 20 && all->stack_size_a < 50)
-		return (3);
-	else if (all->stack_size_a >= 50 && all->stack_size_a < 80)
-		return (5);
-	else if (all->stack_size_a >= 80 && all->stack_size_a < 150)
-		return (8);
-	else if (all->stack_size_a >= 150 && all->stack_size_a < 250)
-		return (10);
-	else if (all->stack_size_a >= 250 && all->stack_size_a < 400)
-		return (12);
-	else if (all->stack_size_a >= 400 && all->stack_size_a < 600)
-		return (16);
-	else if (all->stack_size_a >= 600 && all->stack_size_a < 1000)
-		return (20);
+	if (all->stack_size_a <= 100)
+		return (15);
 	else
-		return (50);
+		return (20);
 }
 
-void	ft_print(t_all *all, int flag)
-{
-	int	i;
-
-	i = -1;
-	if (flag == 1)
-	{
-		while (*all->top_a)
-		{
-			printf("%d\n", (*all->top_a)->data);
-			(*all->top_a) = (*all->top_a)->next;
-		}
-	}
-	else if (flag == 2)
-	{
-		while (*all->top_b)
-		{
-			printf("%d\n", (*all->top_b)->data);
-			(*all->top_b) = (*all->top_b)->next;
-		}
-	}
-	else if (flag == 3)
-		printf("chunk size is %d\n", all->chunk_size);
-	else if (flag == 4)
-		printf("stack size if %d\n", all->stack_size_a);
-	else if (flag == 5)
-	{
-		while (++i < all->stack_size_a)
-			printf("%d\n", all->array[i]);
-	}
-}
-
-// void	parse_indexes(t_all *all)
+// void	ft_print(t_all *all, int flag)
 // {
 // 	int	i;
-// 	int	d;
 
-// 	d = all->chunk_elem_size;
 // 	i = -1;
-// 	all->indexes = malloc(all->chunk_size * sizeof(int));
-// 	while(++i < all->chunk_size)
+// 	if (flag == 1)
 // 	{
-// 		all->indexes[i] = all->array[d];
-// 		d += all->chunk_elem_size;
+// 		while (*all->top_a)
+// 		{
+// 			printf("%d\n", (*all->top_a)->data);
+// 			(*all->top_a) = (*all->top_a)->next;
+// 		}
+// 	}
+// 	else if (flag == 2)
+// 	{
+// 		while (*all->top_b)
+// 		{
+// 			printf("%d\n", (*all->top_b)->data);
+// 			(*all->top_b) = (*all->top_b)->next;
+// 		}
+// 	}
+// 	else if (flag == 3)
+// 		printf("chunk size is %d\n", all->chunk_size);
+// 	else if (flag == 4)
+// 		printf("stack size if %d\n", all->stack_size_a);
+// 	else if (flag == 5)
+// 	{
+// 		while (++i < all->stack_size_a)
+// 			printf("%d\n", all->array[i]);
 // 	}
 // }
 
@@ -90,12 +61,11 @@ void	init_struct(t_all *all, t_stack **top_a, t_stack **top_b)
 	all->top_a = top_a;
 	all->top_b = top_b;
 	all->stack_size_a = check_size(*all->top_a);
+	all->stack_size = all->stack_size_a;
 	all->chunk_size = get_chunk_size(all);
 	all->array = malloc(all->stack_size_a * sizeof(int));
+	all->array_b = malloc((all->stack_size_a - 1) * sizeof(int));
 	all->stack_size_b = 0;
-	all->max_a = largest(all->stack_size_a, *all->top_a);
-	all->min_a = smallest(all->stack_size_a, *all->top_a);
-	// all->index_a = top_a->index;
 	tmp = *all->top_a;
 	while (++i < all->stack_size_a && tmp != NULL)
 	{
@@ -103,71 +73,33 @@ void	init_struct(t_all *all, t_stack **top_a, t_stack **top_b)
 		tmp = tmp->next;
 	}
 	selectionsort(all->array, all->stack_size_a);
+	selectionsort(all->array_b, all->stack_size_a - 1);
 	all->chunk_elem_size = all->stack_size_a / all->chunk_size;
-	// parse_indexes(all);
 }
 
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
 	t_stack	*top_a;
 	t_stack	*top_b;
 	t_all	all;
 	int		i;
-	char	**split;
-	char	*args;
 
 	i = 0;
 	top_a = NULL;
 	top_b = NULL;
-	args = ft_strsjoin(argc, argv, " ");
-	split = ft_split(args, ' ');
-	if (!split[i])
+	all.args = ft_strsjoin(argc, argv, " ");
+	all.split = ft_split(all.args, ' ');
+	if (!all.split[i])
 		exit(0);
-	while (split[i])
-		top_a = add_at_end(top_a, ft_atoi(split[i++], split, top_a, args));
+	while (all.split[i])
+		top_a = add_at_end(top_a, ft_atoi(all.split[i++],
+					all.split, top_a, all.args));
 	init_struct(&all, &top_a, &top_b);
-	initial_check_stack(&all, split, args);
-	ft_print(&all, 1);
-	// sort_all(&all);
-	// if (all.stack_size_a > 5)
-	// 	{
-	// 		// while(all.top_a)
-	// 		// {
-	// 			if((*all.top_a)->data <= all.array[i+ all.chunk_size])
-	// 				{
-	// 					printf("HI\n");
-	// 					push_a_b(all.top_b, all.top_a, 'b');
-	// 				}
-	// 			i++;
-	// 		// }
-		// }
-		// all.top_a = ;
-		// printf("iteration %d\n", i);
-// 		ft_print(&all, CHUNK_SIZE);
-// 		ft_print(&all, stack_size_a);
-// printf("STACK B: %d", ((*all.top_b)->data));
-	// reset_index(top_a);
-	// reset_index(top_b);
-	// printf("\ntop_b:\n");
-	// t_stack *tmp2;
-	// tmp2 = top_b;
-	// while (tmp2)
-	// {
-	// 	printf("Content is %d at index %d\n", tmp2->data, tmp2->index);
-	// 	tmp2 = tmp2->next;
-	// }
-	// printf("top_a:\n");
-	// t_stack *tmp;
-	// tmp = top_a;
-	// while (tmp)
-	// {
-	// 	printf("Content is %d at index %d\n", tmp->data, tmp->index);
-	// 	tmp = tmp->next;
-	// }
+	initial_check_stack(&all, all.split, all.args);
+	sort_all(&all);
 	free(all.array);
-	free(args);
-	ft_free(split);
+	free(all.args);
+	ft_free(all.split);
 	free_stack(top_a);
 	free_stack(top_b);
 }
-

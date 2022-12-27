@@ -6,7 +6,7 @@
 /*   By: sjadalla <sjadalla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 15:13:18 by aalaghba          #+#    #+#             */
-/*   Updated: 2022/12/25 19:49:56 by sjadalla         ###   ########.fr       */
+/*   Updated: 2022/12/27 19:12:19 by sjadalla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,19 +41,11 @@ int	count_words(char const *s, char c)
 	return (count);
 }
 
-char	**ft_split(char const *s, char c)
+char	**split(int string_length, char const *s, char c, char **pointer)
 {
-	int		strs;
-	int		strc;
-	int		string_length;
-	char	**pointer;
+	int	strs;
+	int	strc;
 
-	if (!s)
-		return (NULL);
-	string_length = count_words(s, c);
-	pointer = (char **)malloc(sizeof(char *) * (string_length + 1));
-	if (!pointer)
-		ft_free(pointer);
 	strs = 0;
 	while (strs < string_length)
 	{
@@ -69,5 +61,20 @@ char	**ft_split(char const *s, char c)
 		strs++;
 	}
 	pointer[strs] = 0;
+	return (pointer);
+}
+
+char	**ft_split(char const *s, char c)
+{
+	char	**pointer;
+	int		string_length;
+
+	string_length = count_words(s, c);
+	if (!s)
+		return (NULL);
+	pointer = (char **)malloc(sizeof(char *) * (string_length + 1));
+	if (!pointer)
+		ft_free(pointer);
+	split(string_length, s, c, pointer);
 	return (pointer);
 }
