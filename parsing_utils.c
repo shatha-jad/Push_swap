@@ -6,7 +6,7 @@
 /*   By: sjadalla <sjadalla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 15:28:16 by sjadalla          #+#    #+#             */
-/*   Updated: 2022/06/20 18:38:57 by sjadalla         ###   ########.fr       */
+/*   Updated: 2022/12/25 19:53:56 by sjadalla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,44 +36,46 @@ void	*ft_memset(void *b, int c, size_t len)
 	return (b);
 }
 
-int ft_strlens(int ac, char **av, char *sep)
+int	ft_strlens(int ac, char **av, char *sep)
 {
-    int i;
-    int j;
-    int b;
-    b = 0;
-    i = 0;
-    while (i < ac)
-    {
-        j = 0;
-        while (av[i][j] != '\0')
-            j++;
-        b += j;
-        i++;
-    }
-    b += (ft_strlen (sep) * ac) - ft_strlen (sep);
-    return (b);
+	int	i;
+	int	j;
+	int	b;
+
+	b = 0;
+	i = 0;
+	while (i < ac)
+	{
+		j = 0;
+		while (av[i][j] != '\0')
+			j++;
+		b += j;
+		i++;
+	}
+	b += (ft_strlen (sep) * ac) - ft_strlen (sep);
+	return (b);
 }
-char    *ft_strsjoin(int ac, char **av, char *sep)
+
+char	*ft_strsjoin(int ac, char **av, char *sep)
 {
-    int     i;
-    int     b;
-    int     j;
-    int     d;
-    char    *tmp;
-	
-    i = 0;
-    tmp = ft_calloc ((ft_strlens (ac, av, sep)) + 1, 1);
-    b = 0;
-    while (++i < ac)
-    {
-        j = 0;
-        d = 0;
-        while (av[i][j] != '\0')
-            tmp[b++] = av[i][j++];
-        while (sep[d] != '\0')
-            tmp[b++] = sep[d++];
-    }
-    tmp[b] = '\0';
-    return (tmp);
+	int		i;
+	int		b;
+	int		j;
+	int		d;
+	char	*tmp;
+
+	i = 0;
+	tmp = ft_calloc ((ft_strlens (ac, av, sep)) + 1, 1);
+	b = 0;
+	while (++i < ac)
+	{
+		j = 0;
+		d = 0;
+		while (av[i][j] != '\0')
+			tmp[b++] = av[i][j++];
+		while (sep[d] != '\0')
+			tmp[b++] = sep[d++];
+	}
+	tmp[b] = '\0';
+	return (tmp);
 }

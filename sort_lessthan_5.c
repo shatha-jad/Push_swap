@@ -6,13 +6,13 @@
 /*   By: sjadalla <sjadalla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 16:04:13 by sjadalla          #+#    #+#             */
-/*   Updated: 2022/06/19 17:36:47 by sjadalla         ###   ########.fr       */
+/*   Updated: 2022/12/26 20:43:59 by sjadalla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "push_swap.h"
+#include "push_swap.h"
 
-void sort_lessthan_5(t_all *all, char s)
+void	sort_lessthan_5(t_all *all, char s)
 {
 	if (check_size(*all->top_a) == 2)
 		sort_2(all->top_a, s);
@@ -24,21 +24,20 @@ void sort_lessthan_5(t_all *all, char s)
 		sort_5(all, s);
 }
 
-void sort_2(t_stack **top_a, char s)
+void	sort_2(t_stack **top_a, char s)
 {
-	if (check_sort(*top_a)  == 0)
-			return ;
+	if (check_sort(*top_a) == 0)
+		return ;
 	else
 		swap_a_b(*top_a, s);
 }
 
-void sort_3(t_stack **top_a, char s)
+void	sort_3(t_stack **top_a, char s)
 {
-	int max;
-	int min;
-	t_stack *tmp;
+	int		max;
+	int		min;
+	t_stack	*tmp;
 	t_stack	*tmp2;
-	
 
 	tmp = *top_a;
 	tmp2 = tmp;
@@ -46,70 +45,52 @@ void sort_3(t_stack **top_a, char s)
 		tmp2 = tmp2->next;
 	max = largest(3, *top_a);
 	min = smallest(3, *top_a);
-	if (check_sort(*top_a)  == 0)
-			return ;
+	if (check_sort(*top_a) == 0)
+		return ;
 	if (tmp->data == max && tmp2->data == min)
-	{
-		swap_a_b(*top_a, s);
-		revrotate_a_b(top_a, s);
-		sort_3(top_a, s);
-	}
+		tmp_max_tmp2_min(top_a, s);
 	else if (tmp->data == max)
-	{
-		rotate_a_b(top_a, s);
-		sort_3(top_a, s);
-	}
+		tmp_max(top_a, s);
 	else if (tmp->data == min)
-	{
-		swap_a_b(*top_a, s);
-		rotate_a_b(top_a, s);
-		sort_3(top_a, s);
-	}
+		tmp_min(top_a, s);
 	else if (tmp2->data == max)
-	{
-		swap_a_b(*top_a, s);
-		sort_3(top_a, s);
-	}
+		tmp2_max(top_a, s);
 	else if (tmp2->data == min)
-	{
-		revrotate_a_b(top_a, s);
-		sort_3(top_a, s);
-	}
+		tmp2_min(top_a, s);
 }
 
-void sort_4(t_all *all, char s)
+void	sort_4(t_all *all, char s)
 {
-	if (check_sort(*all->top_a)  == 0)
-		return ;
-	
-	int min;
+	int	min;
 
-	min = smallest(all->stack_size_a, *all->top_a);	
+	if (check_sort(*all->top_a) == 0)
+		return ;
+	min = smallest(all->stack_size_a, *all->top_a);
 	while ((*all->top_a)->next != NULL )
 	{
-		rotate_a_b(all->top_a, s);	
+		rotate_a_b(all->top_a, s);
 		if ((*all->top_a)->data == min)
-		break;
+			break ;
 	}
-		push_a_b(all->top_b, all->top_a, 'b', all);
-		sort_3(all->top_a, s);
-		push_a_b(all->top_a, all->top_b, s, all);
+	push_a_b(all->top_b, all->top_a, 'b', all);
+	sort_3(all->top_a, s);
+	push_a_b(all->top_a, all->top_b, s, all);
 }
 
-void sort_5(t_all *all, char s)
+void	sort_5(t_all *all, char s)
 {
-	if (check_sort(*all->top_a)  == 0)
-		return ;
-	int min;
+	int	min;
 
-	min = smallest(all->stack_size_a, *all->top_a);	
+	if (check_sort(*all->top_a) == 0)
+		return ;
+	min = smallest(all->stack_size_a, *all->top_a);
 	while ((*all->top_a)->next != NULL )
 	{
-		rotate_a_b(all->top_a, s);		
+		rotate_a_b(all->top_a, s);
 		if ((*all->top_a)->data == min)
-		break;
+			break ;
 	}
-		push_a_b(all->top_b, all->top_a, 'b', all);
-		sort_4(all, s);
-		push_a_b(all->top_a, all->top_b, s, all);
+	push_a_b(all->top_b, all->top_a, 'b', all);
+	sort_4(all, s);
+	push_a_b(all->top_a, all->top_b, s, all);
 }

@@ -6,15 +6,11 @@
 /*   By: sjadalla <sjadalla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 15:13:18 by aalaghba          #+#    #+#             */
-/*   Updated: 2022/06/20 17:55:37 by sjadalla         ###   ########.fr       */
+/*   Updated: 2022/12/25 19:49:56 by sjadalla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-#include <stdio.h>
-#include <stdlib.h>
-
 
 int	count_chars(char const *s, char c)
 {

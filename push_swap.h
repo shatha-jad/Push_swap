@@ -6,7 +6,7 @@
 /*   By: sjadalla <sjadalla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 21:01:58 by sjadalla          #+#    #+#             */
-/*   Updated: 2022/07/17 17:41:03 by sjadalla         ###   ########.fr       */
+/*   Updated: 2022/12/26 20:41:46 by sjadalla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,13 +35,15 @@ typedef struct nodes {
 	int		*array;
 	int		*index_a;
 	int		*index_b;
+	int		max_a;
+	int		min_a;
 }t_all;
 
-#define STACK_A		1
-#define	STACK_B		2
-#define	CHUNK_SIZE	3
-#define	STACK_SIZE	4
-#define	ARRAY		5
+# define STACK_A	1
+# define STACK_B	2
+# define CHUNK_SIZE	3
+# define STACK_SIZE 4
+# define ARRAY      5
 
 // Parsing
 
@@ -54,11 +56,11 @@ void	reset_index(t_stack *top_a);
 // void stack_b(t_stack **top_b, t_stack *top_a);
 int		check_sort(t_stack *top_a);
 int		check_size(t_stack *top_a);
-void	initial_check_stack (t_all *all, char **split, char *args);
+void	initial_check_stack(t_all *all, char **split, char *args);
 // void	check_size(t_stack	*arg);
 
 // Error handling
-int		ft_atoi( char *str,char **split, t_stack *top, char *args);
+int		ft_atoi( char *str, char **split, t_stack *top, char *args);
 void	check_dup(t_stack *str, char **split, char *args);
 char	**ft_split(char const *s, char c);
 int		count_chars(char const *s, char c);
@@ -77,40 +79,45 @@ void	rrr(t_stack **top_a, t_stack **top_b);
 void	sort_lessthan_5(t_all *all, char s);
 void	sort_2(t_stack **top_a, char s);
 void	sort_3(t_stack **top_a, char s);
+void	tmp_min(t_stack **top_a, char s);
+void	tmp_max_tmp2_min(t_stack **top_a, char s);
+void	tmp2_min(t_stack **top_a, char s);
+void	tmp_max(t_stack **top_a, char s);
+void	tmp2_max(t_stack **top_a, char s);
 void	sort_4(t_all *all, char s);
 void	sort_5(t_all *all, char s);
-void selectionSort(int arr[], int n);
+void	selectionsort(int arr[], int n);
 
 // Sorting
 // void	sort(t_stack **top_a, t_stack **top_b);
-void	insert	(t_stack **top_a, t_stack **top_b, int num);
+void	insert(t_stack **top_a, t_stack **top_b, int num);
 // void	sort_100(t_stack **top_a, t_stack **top_b, t_all *all);
-void 	sort_all(t_all *all);
+void	sort_all(t_all *all);
 
 // sorting utils
-int			smallest(int size, t_stack *top_a);
-int			largest(int size, t_stack *top_a);
-int			largest_index(int size, t_stack *top_a);
-int			stack_median(t_stack *stack, int size, char c);
-int			stack_medians(t_stack *stack);
-int			lessthan_median (t_stack *stack, int median);
-int			stack_mean(t_stack *stack);
-void 		sort_b( t_stack **top_b, int median_b);
-t_stack*	bubbleSort(t_stack** head, int count);
-t_stack*	swap(t_stack* ptr1, t_stack* ptr2);
-t_stack*	largest_5(t_stack **head);
+int		smallest(int size, t_stack *top_a);
+int		largest(int size, t_stack *top_a);
+int		largest_index(int size, t_stack *top_a);
+int		stack_median(t_stack *stack, int size, char c);
+int		stack_medians(t_stack *stack);
+int		lessthan_median(t_stack *stack, int median);
+int		stack_mean(t_stack *stack);
+void	sort_b(t_stack **top_b, int median_b);
+t_stack	*bubbleSort(t_stack **head, int count);
+t_stack	*swap(t_stack *ptr1, t_stack *ptr2);
+t_stack	*largest_5(t_stack **head);
 void	ft_print(t_all *all, int flag);
 
 // free
 void	ft_free(char **tab);
 void	free_stack(t_stack	*top);
-void 	free_error_stack(t_stack *stack, char **split, char *args, int i);
+void	free_error_stack(t_stack *stack, char **split, char *args, int i);
 void	free_error_pars(char **split);
 
 // parsing utils
 void	*ft_memset(void *b, int c, size_t len);
 void	*ft_calloc(size_t count, size_t size);
-char    *ft_strsjoin(int ac, char **av, char *sep);
+char	*ft_strsjoin(int ac, char **av, char *sep);
 int		ft_strlens(int ac, char **av, char *sep);
 size_t	ft_strlen(const char *str);
 

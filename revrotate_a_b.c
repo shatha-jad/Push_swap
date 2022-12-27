@@ -6,7 +6,7 @@
 /*   By: sjadalla <sjadalla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 16:11:25 by sjadalla          #+#    #+#             */
-/*   Updated: 2022/06/20 18:38:09 by sjadalla         ###   ########.fr       */
+/*   Updated: 2022/12/25 19:56:55 by sjadalla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,4 +31,4 @@ void	revrotate_a_b(t_stack **top_a, char s)
 		else if (s == 'b')
 			write (1, "rrb\n", 4);
 	}
- }
+}

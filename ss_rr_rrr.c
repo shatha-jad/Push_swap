@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rr&rrr.c                                           :+:      :+:    :+:   */
+/*   ss_rr_rrr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sjadalla <sjadalla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 21:10:46 by sjadalla          #+#    #+#             */
-/*   Updated: 2022/06/20 18:34:14 by sjadalla         ###   ########.fr       */
+/*   Updated: 2022/12/25 20:09:00 by sjadalla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ void	rr(t_stack **top_a, t_stack **top_b)
 	rotate_a_b(top_b, 's');
 	reset_index(*top_b);
 	reset_index(*top_a);
-
 }
 
 void	rrr(t_stack **top_a, t_stack **top_b)

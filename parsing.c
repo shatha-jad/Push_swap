@@ -6,16 +6,16 @@
 /*   By: sjadalla <sjadalla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 21:18:07 by sjadalla          #+#    #+#             */
-/*   Updated: 2022/07/05 18:16:55 by sjadalla         ###   ########.fr       */
+/*   Updated: 2022/12/25 19:54:15 by sjadalla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_stack *add_at_end(t_stack *top_a, int content)
+t_stack	*add_at_end(t_stack *top_a, int content)
 {
-	t_stack *new;
-	t_stack *tmp2;
+	t_stack	*new;
+	t_stack	*tmp2;
 
 	tmp2 = NULL;
 	new = NULL;

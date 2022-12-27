@@ -1,14 +1,19 @@
 {
     "files.associations": {
-        "array": "c",
-        "string_view": "c",
-        "initializer_list": "c",
-        "string": "c",
-        "random": "c",
-        "*.tcc": "c",
-        "deque": "c",
-        "unordered_map": "c",
-        "vector": "c",
-        "ostream": "c"
-    }
+		"array": "c",
+		"string_view": "c",
+		"initializer_list": "c",
+		"string": "c",
+		"random": "c",
+		"*.tcc": "c",
+		"deque": "c",
+		"unordered_map": "c",
+		"vector": "c",
+		"ostream": "c",
+		"__config": "c",
+		"algorithm": "c",
+		"chrono": "c",
+		"limits": "c",
+		"ratio": "c"
+	}
 }

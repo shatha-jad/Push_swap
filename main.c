@@ -6,7 +6,7 @@
 /*   By: sjadalla <sjadalla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 18:53:09 by sjadalla          #+#    #+#             */
-/*   Updated: 2022/07/17 17:44:31 by sjadalla         ###   ########.fr       */
+/*   Updated: 2022/12/26 20:28:05 by sjadalla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,24 @@
 
 int	get_chunk_size(t_all *all)
 {
-	if(all->stack_size_a > 5 && all->stack_size_a < 20)
+	if (all->stack_size_a > 5 && all->stack_size_a < 20)
 		return (2);
-	else if(all->stack_size_a >= 20 && all->stack_size_a < 50)
+	else if (all->stack_size_a >= 20 && all->stack_size_a < 50)
 		return (3);
-	else if(all->stack_size_a >= 50 && all->stack_size_a < 80)
+	else if (all->stack_size_a >= 50 && all->stack_size_a < 80)
 		return (5);
-	else if(all->stack_size_a >= 80 && all->stack_size_a < 150)
+	else if (all->stack_size_a >= 80 && all->stack_size_a < 150)
 		return (8);
-	else if(all->stack_size_a >= 150 && all->stack_size_a < 250)
+	else if (all->stack_size_a >= 150 && all->stack_size_a < 250)
 		return (10);
-	else if(all->stack_size_a >= 250 && all->stack_size_a < 400)
+	else if (all->stack_size_a >= 250 && all->stack_size_a < 400)
 		return (12);
-	else if(all->stack_size_a >= 400 && all->stack_size_a < 600)
+	else if (all->stack_size_a >= 400 && all->stack_size_a < 600)
 		return (16);
-	else if(all->stack_size_a >= 600 && all->stack_size_a < 1000)
+	else if (all->stack_size_a >= 600 && all->stack_size_a < 1000)
 		return (20);
 	else
-		return(50);
+		return (50);
 }
 
 void	ft_print(t_all *all, int flag)
@@ -39,32 +39,31 @@ void	ft_print(t_all *all, int flag)
 	int	i;
 
 	i = -1;
-	if(flag == 1)
+	if (flag == 1)
 	{
-		while(*all->top_a)
+		while (*all->top_a)
 		{
 			printf("%d\n", (*all->top_a)->data);
 			(*all->top_a) = (*all->top_a)->next;
 		}
 	}
-	else if(flag == 2)
+	else if (flag == 2)
 	{
-		while(*all->top_b)
+		while (*all->top_b)
 		{
 			printf("%d\n", (*all->top_b)->data);
 			(*all->top_b) = (*all->top_b)->next;
 		}
 	}
-	else if(flag == 3)
+	else if (flag == 3)
 		printf("chunk size is %d\n", all->chunk_size);
-	else if(flag == 4)
+	else if (flag == 4)
 		printf("stack size if %d\n", all->stack_size_a);
 	else if (flag == 5)
 	{
-		while(++i < all->stack_size_a)
+		while (++i < all->stack_size_a)
 			printf("%d\n", all->array[i]);
 	}
-
 }
 
 // void	parse_indexes(t_all *all)
@@ -85,54 +84,51 @@ void	ft_print(t_all *all, int flag)
 void	init_struct(t_all *all, t_stack **top_a, t_stack **top_b)
 {
 	int		i;
-	t_stack *tmp;
-	
+	t_stack	*tmp;
+
 	i = -1;
 	all->top_a = top_a;
 	all->top_b = top_b;
 	all->stack_size_a = check_size(*all->top_a);
-	all->chunk_size =  get_chunk_size(all);
+	all->chunk_size = get_chunk_size(all);
 	all->array = malloc(all->stack_size_a * sizeof(int));
 	all->stack_size_b = 0;
+	all->max_a = largest(all->stack_size_a, *all->top_a);
+	all->min_a = smallest(all->stack_size_a, *all->top_a);
 	// all->index_a = top_a->index;
-
 	tmp = *all->top_a;
-	while(++i < all->stack_size_a && tmp != NULL)
+	while (++i < all->stack_size_a && tmp != NULL)
 	{
 		all->array[i] = tmp->data;
 		tmp = tmp->next;
 	}
-	selectionSort(all->array, all->stack_size_a);
+	selectionsort(all->array, all->stack_size_a);
 	all->chunk_elem_size = all->stack_size_a / all->chunk_size;
 	// parse_indexes(all);
 }
 
 int main(int argc, char **argv)
 {
-	t_stack *top_a;
-	t_stack *top_b;
+	t_stack	*top_a;
+	t_stack	*top_b;
 	t_all	all;
-
-	int i;
-	char **split;
-	char *args;
+	int		i;
+	char	**split;
+	char	*args;
 
 	i = 0;
 	top_a = NULL;
 	top_b = NULL;
-
 	args = ft_strsjoin(argc, argv, " ");
 	split = ft_split(args, ' ');
 	if (!split[i])
 		exit(0);
 	while (split[i])
 		top_a = add_at_end(top_a, ft_atoi(split[i++], split, top_a, args));
-
 	init_struct(&all, &top_a, &top_b);
 	initial_check_stack(&all, split, args);
-
-	sort_all(&all);
-
+	ft_print(&all, 1);
+	// sort_all(&all);
 	// if (all.stack_size_a > 5)
 	// 	{
 	// 		// while(all.top_a)
@@ -174,3 +170,4 @@ int main(int argc, char **argv)
 	free_stack(top_a);
 	free_stack(top_b);
 }
+
