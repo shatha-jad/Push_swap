@@ -6,26 +6,19 @@
 /*   By: sjadalla <sjadalla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/19 20:54:01 by sjadalla          #+#    #+#             */
-/*   Updated: 2022/12/25 20:11:33 by sjadalla         ###   ########.fr       */
+/*   Updated: 2023/01/03 14:53:26 by sjadalla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-// void	free_error_pars(char **split )
-// {
-// 	ft_free(split);
-// 	printf("Error in parsing\n");
-// 	error_msg(1);
-// 	// free_stack(stack);
-// 	// error_msg(1);
-// }
-
-void	free_error_stack(t_stack *stack, char **split, char *args, int i)
+void	free_error_stack(t_stack *stack, t_all *all, int i)
 {
-	free (args);
-	ft_free(split);
+	free(all->args);
+	ft_free(all->split);
 	free_stack(stack);
+	if (i == 0)
+		free(all->array);
 	error_msg(i);
 }
 

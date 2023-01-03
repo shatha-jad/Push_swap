@@ -6,7 +6,7 @@
 /*   By: sjadalla <sjadalla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 21:11:09 by sjadalla          #+#    #+#             */
-/*   Updated: 2022/12/27 19:06:33 by sjadalla         ###   ########.fr       */
+/*   Updated: 2023/01/03 14:36:11 by sjadalla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,6 @@ int	find_alg(t_stack *top_b, int size)
 
 void	push_back(t_all *all)
 {
-	int	i;
-
-	i = 0;
 	while (*all->top_b)
 	{
 		if ((*all->top_b)->data == largest(all->stack_size_b, *all->top_b))
@@ -55,17 +52,17 @@ void	sort_all(t_all *all)
 	{
 		while (all->stack_size_a)
 		{
+			if ((*all->top_a)->data <= all->array[i])
+			{
+				push_a_b(all->top_b, all->top_a, 'b', all);
+				i++;
+			}
 			if ((i + all->chunk_size) > all->stack_size)
 				all->chunk_size--;
 			else if ((*all->top_a)->data <= all->array[i + all->chunk_size])
 			{
 				push_a_b(all->top_b, all->top_a, 'b', all);
 				rotate_a_b(all->top_b, 'b');
-				i++;
-			}
-			if ((*all->top_a)->data <= all->array[i])
-			{
-				push_a_b(all->top_b, all->top_a, 'b', all);
 				i++;
 			}
 			else

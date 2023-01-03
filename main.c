@@ -6,7 +6,7 @@
 /*   By: sjadalla <sjadalla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 18:53:09 by sjadalla          #+#    #+#             */
-/*   Updated: 2022/12/27 19:06:17 by sjadalla         ###   ########.fr       */
+/*   Updated: 2023/01/03 14:48:26 by sjadalla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,43 +14,11 @@
 
 int	get_chunk_size(t_all *all)
 {
-	if (all->stack_size_a <= 100)
+	if (all->stack_size_a <= 150)
 		return (15);
 	else
-		return (20);
+		return (30);
 }
-
-// void	ft_print(t_all *all, int flag)
-// {
-// 	int	i;
-
-// 	i = -1;
-// 	if (flag == 1)
-// 	{
-// 		while (*all->top_a)
-// 		{
-// 			printf("%d\n", (*all->top_a)->data);
-// 			(*all->top_a) = (*all->top_a)->next;
-// 		}
-// 	}
-// 	else if (flag == 2)
-// 	{
-// 		while (*all->top_b)
-// 		{
-// 			printf("%d\n", (*all->top_b)->data);
-// 			(*all->top_b) = (*all->top_b)->next;
-// 		}
-// 	}
-// 	else if (flag == 3)
-// 		printf("chunk size is %d\n", all->chunk_size);
-// 	else if (flag == 4)
-// 		printf("stack size if %d\n", all->stack_size_a);
-// 	else if (flag == 5)
-// 	{
-// 		while (++i < all->stack_size_a)
-// 			printf("%d\n", all->array[i]);
-// 	}
-// }
 
 void	init_struct(t_all *all, t_stack **top_a, t_stack **top_b)
 {
@@ -64,7 +32,6 @@ void	init_struct(t_all *all, t_stack **top_a, t_stack **top_b)
 	all->stack_size = all->stack_size_a;
 	all->chunk_size = get_chunk_size(all);
 	all->array = malloc(all->stack_size_a * sizeof(int));
-	all->array_b = malloc((all->stack_size_a - 1) * sizeof(int));
 	all->stack_size_b = 0;
 	tmp = *all->top_a;
 	while (++i < all->stack_size_a && tmp != NULL)
@@ -73,7 +40,6 @@ void	init_struct(t_all *all, t_stack **top_a, t_stack **top_b)
 		tmp = tmp->next;
 	}
 	selectionsort(all->array, all->stack_size_a);
-	selectionsort(all->array_b, all->stack_size_a - 1);
 	all->chunk_elem_size = all->stack_size_a / all->chunk_size;
 }
 
@@ -84,6 +50,8 @@ int	main(int argc, char **argv)
 	t_all	all;
 	int		i;
 
+	if (argc == 1)
+		return (1);
 	i = 0;
 	top_a = NULL;
 	top_b = NULL;
@@ -93,9 +61,9 @@ int	main(int argc, char **argv)
 		exit(0);
 	while (all.split[i])
 		top_a = add_at_end(top_a, ft_atoi(all.split[i++],
-					all.split, top_a, all.args));
+					&all, top_a));
 	init_struct(&all, &top_a, &top_b);
-	initial_check_stack(&all, all.split, all.args);
+	initial_check_stack(&all);
 	sort_all(&all);
 	free(all.array);
 	free(all.args);

@@ -6,19 +6,19 @@
 #    By: sjadalla <sjadalla@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/14 16:21:12 by sjadalla          #+#    #+#              #
-#    Updated: 2022/12/26 20:39:58 by sjadalla         ###   ########.fr        #
+#    Updated: 2023/01/03 14:58:49 by sjadalla         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 
 NAME    = push_swap
 CC      = gcc
-CFLAGS  = -g3 
+CFLAGS  = -Werror -Wall -Wextra -g3 
 RM      = rm -f
 
 SRCS	= main.c ft_atoi.c ft_split.c parsing.c sort_lessthan_5.c sort_utils.c parsing_utils.c\
 			parsing_utils2.c swap_a.c push_a_b.c rotate_a_b.c revrotate_a_b.c ss_rr_rrr.c\
-			initial_check_stack.c free_errors.c sort_100.c selection_sort.c sort_3.c
+			initial_check_stack.c free_errors.c sort_all.c selection_sort.c
 
 OBJS    = $(SRCS:.c=.o)
 

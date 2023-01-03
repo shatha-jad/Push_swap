@@ -6,7 +6,7 @@
 /*   By: sjadalla <sjadalla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 21:01:58 by sjadalla          #+#    #+#             */
-/*   Updated: 2022/12/27 19:05:21 by sjadalla         ###   ########.fr       */
+/*   Updated: 2023/01/03 14:48:06 by sjadalla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,12 +60,12 @@ void	reset_index(t_stack *top_a);
 // void stack_b(t_stack **top_b, t_stack *top_a);
 int		check_sort(t_stack *top_a);
 int		check_size(t_stack *top_a);
-void	initial_check_stack(t_all *all, char **split, char *args);
+void	initial_check_stack(t_all *all);
 // void	check_size(t_stack	*arg);
 
 // Error handling
-int		ft_atoi( char *str, char **split, t_stack *top, char *args);
-void	check_dup(t_stack *str, char **split, char *args);
+int		ft_atoi( char *str, t_all *all, t_stack *top);
+void	check_dup(t_stack *str, t_all *all);
 char	**ft_split(char const *s, char c);
 int		count_chars(char const *s, char c);
 int		count_words(char const *s, char c);
@@ -115,7 +115,7 @@ void	ft_print(t_all *all, int flag);
 // free
 void	ft_free(char **tab);
 void	free_stack(t_stack	*top);
-void	free_error_stack(t_stack *stack, char **split, char *args, int i);
+void	free_error_stack(t_stack *stack, t_all *all, int i);
 void	free_error_pars(char **split);
 
 // parsing utils

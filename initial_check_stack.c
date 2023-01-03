@@ -6,17 +6,17 @@
 /*   By: sjadalla <sjadalla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 18:18:32 by sjadalla          #+#    #+#             */
-/*   Updated: 2022/12/25 19:51:01 by sjadalla         ###   ########.fr       */
+/*   Updated: 2023/01/03 14:47:58 by sjadalla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	initial_check_stack(t_all *all, char **split, char *args)
+void	initial_check_stack(t_all *all)
 {
-	check_dup(*all->top_a, split, args);
+	check_dup(*all->top_a, all);
 	if (check_sort(*all->top_a) == 0)
-		free_error_stack(*all->top_a, split, args, 0);
+		free_error_stack(*all->top_a, all, 0);
 	if (all->stack_size_a <= 5)
 		sort_lessthan_5(all, 'a');
 }
@@ -49,7 +49,7 @@ int	check_size(t_stack *top_a)
 	return (i);
 }
 
-void	check_dup(t_stack *str, char **split, char *args)
+void	check_dup(t_stack *str, t_all *all)
 {
 	t_stack	*original;
 	t_stack	*nextt;
@@ -66,7 +66,7 @@ void	check_dup(t_stack *str, char **split, char *args)
 			while (nextt)
 			{
 				if (nextt->data == original->data)
-					free_error_stack(str, split, args, 1);
+					free_error_stack(str, all, 1);
 				else
 					nextt = nextt->next;
 			}

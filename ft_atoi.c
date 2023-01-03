@@ -6,13 +6,13 @@
 /*   By: sjadalla <sjadalla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 19:23:04 by sjadalla          #+#    #+#             */
-/*   Updated: 2022/12/26 20:46:59 by sjadalla         ###   ########.fr       */
+/*   Updated: 2023/01/03 14:43:10 by sjadalla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	ft_atoi(char *str, char **split, t_stack *top, char *args)
+int	ft_atoi(char *str, t_all *all, t_stack *top)
 {
 	unsigned int	num;
 	int				sign;
@@ -28,18 +28,15 @@ int	ft_atoi(char *str, char **split, t_stack *top, char *args)
 	if (*(str + i) == '+' || *(str + i) == '-')
 		i++;
 	if (*(str + i) < '0' || *(str + i) > '9')
-		free_error_stack(top, split, args, 1);
+		free_error_stack(top, all, 1);
 	while (*(str + i) >= '0' && *(str + i) <= '9')
 	{
 		num = num * 10 + (*(str + i++) - 48);
 		if (num > INT_MAX)
-			free_error_stack(top, split, args, 1);
+			free_error_stack(top, all, 1);
 	}
+	if (*(str + i) != '\0')
+		if ((*(str + i) < '0' || *(str + i) > '9'))
+			free_error_stack(top, all, 1);
 	return (num * sign);
 }
-
-	// if (*(str + i) != '\0')
-	// {
-	// 	if ((*(str + i) < '0' || *(str + i) > '9'))
-	// 		free_error_stack(top, split, args, 1);
-	// }
