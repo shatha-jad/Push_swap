@@ -1,0 +1,13 @@
+bonus:
+Error management
+	non numeric -> error
+	duplicate numeric -> error
+	greater than MAXINT ->error
+done	no parameter -> nothing and return
+	action that doesnt not exit such as psa -> error
+	spaces before or after the action -> error
+False test:
+	list that doesnt order the integers -> error
+
+True tests
+	

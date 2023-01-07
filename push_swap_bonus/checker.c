@@ -1,23 +1,69 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   checker.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sjadalla <sjadalla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/19 18:53:09 by sjadalla          #+#    #+#             */
-/*   Updated: 2023/01/07 21:01:42 by sjadalla         ###   ########.fr       */
+/*   Created: 2023/01/04 14:03:59 by sjadalla          #+#    #+#             */
+/*   Updated: 2023/01/07 20:35:26 by sjadalla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	get_chunk_size(t_all *all)
+int	op_rev(char	*str, t_all	*all)
 {
-	if (all->stack_size_a <= 150)
-		return (15);
+	if (strncmp(str, "sa\n", 3) == 0)
+		swap_a_b(*all->top_a);
+	else if (strncmp(str, "sb\n", 3) == 0)
+		swap_a_b(*all->top_b);
+	else if (strncmp(str, "rb\n", 3) == 0)
+		rotate_a_b(all->top_b);
+	else if (strncmp(str, "ra\n", 3) == 0)
+		rotate_a_b(all->top_a);
+	else if (strncmp(str, "rrb\n", 3) == 0)
+		revrotate_a_b(all->top_b);
+	else if (strncmp(str, "rra\n", 3) == 0)
+		revrotate_a_b(all->top_a);
+	else if (strncmp(str, "pb\n", 3) == 0)
+		push_a_b(all->top_b, all->top_a);
+	else if (strncmp(str, "pa\n", 3) == 0)
+		push_a_b(all->top_a, all->top_b);
+	else if (strncmp(str, "rr\n", 3) == 0)
+		rr(all->top_a, all->top_b);
+	else if (strncmp(str, "rrr\n", 3) == 0)
+		rrr(all->top_a, all->top_b);
+	else if (strncmp(str, "ss\n", 3) == 0)
+		ss(all->top_a, all->top_b);
 	else
-		return (30);
+		return (0);
+	return (1);
+}
+
+int	rev_eng(t_all *all)
+{
+	char	*str;
+
+	while (1)
+	{
+		str = get_next_line(0);
+		if (!str)
+			break ;
+		if (op_rev(str, all) == 0)
+		{
+			printf("ERROR\n");
+			frees(all);
+			free(str);
+			exit(1);
+		}
+		free(str);
+	}
+	if (check_sort(*all->top_a) == 0 && *all->top_b == NULL)
+		printf("OK\n");
+	else
+		printf("KO\n");
+	return (EXIT_SUCCESS);
 }
 
 void	init_struct(t_all *all, t_stack **top_a, t_stack **top_b)
@@ -30,7 +76,6 @@ void	init_struct(t_all *all, t_stack **top_a, t_stack **top_b)
 	all->top_b = top_b;
 	all->stack_size_a = check_size(*all->top_a);
 	all->stack_size = all->stack_size_a;
-	all->chunk_size = get_chunk_size(all);
 	all->array = malloc(all->stack_size_a * sizeof(int));
 	all->stack_size_b = 0;
 	tmp = *all->top_a;
@@ -40,7 +85,6 @@ void	init_struct(t_all *all, t_stack **top_a, t_stack **top_b)
 		tmp = tmp->next;
 	}
 	selectionsort(all->array, all->stack_size_a);
-	all->chunk_elem_size = all->stack_size_a / all->chunk_size;
 }
 
 int	main(int argc, char **argv)
@@ -63,11 +107,7 @@ int	main(int argc, char **argv)
 		top_a = add_at_end(top_a, ft_atoi(all.split[i++],
 					&all, top_a));
 	init_struct(&all, &top_a, &top_b);
-	initial_check_stack(&all);
-	sort_all(&all);
-	free(all.array);
-	free(all.args);
-	ft_free(all.split);
-	free_stack(top_a);
-	free_stack(top_b);
+	check_dup(*all.top_a, &all);
+	rev_eng(&all);
+	frees(&all);
 }

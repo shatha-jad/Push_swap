@@ -6,20 +6,11 @@
 /*   By: sjadalla <sjadalla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 18:18:32 by sjadalla          #+#    #+#             */
-/*   Updated: 2023/01/07 19:49:51 by sjadalla         ###   ########.fr       */
+/*   Updated: 2023/01/07 20:35:51 by sjadalla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-void	initial_check_stack(t_all *all)
-{
-	check_dup(*all->top_a, all);
-	if (check_sort(*all->top_a) == 0)
-		free_error_stack(*all->top_a, all, 0);
-	if (all->stack_size_a <= 5)
-		sort_lessthan_5(all, 'a');
-}
 
 int	check_sort(t_stack *top_a)
 {

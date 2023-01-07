@@ -1,31 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   swap_a.c                                           :+:      :+:    :+:   */
+/*   rotate_a_b.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sjadalla <sjadalla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/22 16:55:23 by aalaghba          #+#    #+#             */
-/*   Updated: 2023/01/07 20:44:47 by sjadalla         ###   ########.fr       */
+/*   Created: 2022/06/05 16:10:45 by sjadalla          #+#    #+#             */
+/*   Updated: 2023/01/07 19:12:46 by sjadalla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	swap_a_b(t_stack *top_a, char s)
+void	rotate_a_b(t_stack **top_a)
 {
-	int	tmp;
+	t_stack	*tmp;
+	t_stack	*tmp2;
+	t_stack	*tmp3;
 
-	if (!top_a || !top_a->next)
+	if (*top_a == NULL)
 		return ;
-	tmp = top_a->data;
-	top_a->data = top_a->next->data;
-	top_a->next->data = tmp;
-	if (s == 'a')
-		write (1, "sa\n", 3);
-	else if (s == 'b')
-		write (1, "sb\n", 3);
-	else if (s == 's')
-		write (1, "ss\n", 3);
-	reset_index(top_a);
+	if ((*top_a)->next == NULL)
+		return ;
+	tmp = *top_a;
+	tmp3 = (*top_a)->next;
+	tmp2 = *top_a;
+	while (tmp2->next != NULL)
+		tmp2 = tmp2->next;
+	tmp2->next = tmp;
+	tmp2 = tmp2->next;
+	tmp2->next = NULL;
+	tmp2 = tmp3;
+	*top_a = tmp2;
+	reset_index(*top_a);
 }

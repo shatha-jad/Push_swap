@@ -1,37 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   revrotate_a_b.c                                    :+:      :+:    :+:   */
+/*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sjadalla <sjadalla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/07 16:11:25 by sjadalla          #+#    #+#             */
-/*   Updated: 2023/01/07 20:45:42 by sjadalla         ###   ########.fr       */
+/*   Created: 2022/06/11 21:18:07 by sjadalla          #+#    #+#             */
+/*   Updated: 2022/12/25 19:54:15 by sjadalla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	revrotate_a_b(t_stack **top_a, char s)
+t_stack	*add_at_end(t_stack *top_a, int content)
 {
-	t_stack	*tmp;
+	t_stack	*new;
 	t_stack	*tmp2;
 
-	tmp = *top_a;
-	if (*top_a)
+	tmp2 = NULL;
+	new = NULL;
+	new = malloc(sizeof(t_stack));
+	if (!new)
+		return (NULL);
+	if (top_a == NULL)
 	{
-		while (tmp->next->next != NULL)
-			tmp = tmp->next;
-		tmp2 = tmp ->next;
-		tmp->next = NULL;
-		tmp2->next = *top_a;
-		*top_a = tmp2;
-		if (s == 'a')
-			write (1, "rra\n", 4);
-		else if (s == 'b')
-			write (1, "rrb\n", 4);
-		else if (s == 'r')
-			write (1, "rrr\n", 4);
+		new->index = 0;
+		new->data = content;
+		new->next = NULL;
+		return (new);
 	}
-	reset_index(*top_a);
+	tmp2 = top_a;
+	while (tmp2->next != NULL)
+		tmp2 = tmp2->next;
+	tmp2->next = new;
+	new->data = content;
+	new->next = NULL;
+	new->index = tmp2->index + 1;
+	return (top_a);
 }

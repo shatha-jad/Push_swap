@@ -1,31 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   swap_a.c                                           :+:      :+:    :+:   */
+/*   parsing_utils2.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sjadalla <sjadalla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/22 16:55:23 by aalaghba          #+#    #+#             */
-/*   Updated: 2023/01/07 20:44:47 by sjadalla         ###   ########.fr       */
+/*   Created: 2022/06/20 18:32:08 by sjadalla          #+#    #+#             */
+/*   Updated: 2023/01/06 16:04:24 by sjadalla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	swap_a_b(t_stack *top_a, char s)
-{
-	int	tmp;
+// size_t	ft_strlen(const char *str)
+// {
+// 	int	i;
 
-	if (!top_a || !top_a->next)
-		return ;
-	tmp = top_a->data;
-	top_a->data = top_a->next->data;
-	top_a->next->data = tmp;
-	if (s == 'a')
-		write (1, "sa\n", 3);
-	else if (s == 'b')
-		write (1, "sb\n", 3);
-	else if (s == 's')
-		write (1, "ss\n", 3);
-	reset_index(top_a);
+// 	if (!str)
+// 		return (0);
+// 	i = 0;
+// 	while (str[i] != '\0')
+// 		i++;
+// 	return (i);
+// }
+
+void	reset_index(t_stack *top_a)
+{
+	t_stack	*tmp;
+	int		i;
+
+	i = 0;
+	tmp = NULL;
+	tmp = top_a;
+	while (tmp != NULL)
+	{
+		tmp->index = i;
+		i++;
+		tmp = tmp->next;
+	}
 }
