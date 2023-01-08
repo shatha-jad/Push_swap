@@ -6,7 +6,7 @@
 /*   By: sjadalla <sjadalla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/17 17:01:04 by sjadalla          #+#    #+#             */
-/*   Updated: 2023/01/06 17:34:17 by sjadalla         ###   ########.fr       */
+/*   Updated: 2023/01/08 19:59:03 by sjadalla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,36 +106,3 @@ char	*get_next_line(int fd)
 	static_var = ft_save(static_var);
 	return (next_line);
 }
-
-// int	main()
-// {
-// 	int		fd1;
-// 	int		fd2;
-// 	int		fd3;
-// 	char	*str;
-// 	int		i;
-
-// 	fd1 = open("test.txt", O_RDONLY);
-// 	fd2 = open("test1.txt", O_RDONLY);
-// 	fd3 = open("test3", O_RDONLY);
-// 	i = 3;
-// 	while (i != 0)
-// 	{
-// 		str = get_next_line(fd1);
-// 		printf("%s", str);
-// 		free(str);
-
-// 		str = get_next_line(fd2);
-// 		printf("%s", str);
-// 		free(str);
-
-// 		str = get_next_line(fd3);
-// 		printf("%s", str);
-// 		free(str);
-// 		i--;
-// 	}
-// 	close(fd1);
-// 	close(fd2);
-// 	close(fd3);
-// 	return (EXIT_SUCCESS);
-// }

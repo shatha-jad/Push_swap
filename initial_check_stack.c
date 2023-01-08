@@ -6,7 +6,7 @@
 /*   By: sjadalla <sjadalla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 18:18:32 by sjadalla          #+#    #+#             */
-/*   Updated: 2023/01/07 19:49:51 by sjadalla         ###   ########.fr       */
+/*   Updated: 2023/01/08 20:15:05 by sjadalla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ void	check_dup(t_stack *str, t_all *all)
 			while (nextt)
 			{
 				if (nextt->data == original->data)
-					free_error_stack(str, all, 1);
+					free_error_stack(str, all, 2);
 				else
 					nextt = nextt->next;
 			}

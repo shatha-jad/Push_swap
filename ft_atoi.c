@@ -6,7 +6,7 @@
 /*   By: sjadalla <sjadalla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 19:23:04 by sjadalla          #+#    #+#             */
-/*   Updated: 2023/01/03 14:43:10 by sjadalla         ###   ########.fr       */
+/*   Updated: 2023/01/08 20:27:02 by sjadalla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 int	ft_atoi(char *str, t_all *all, t_stack *top)
 {
-	unsigned int	num;
-	int				sign;
-	int				i;
+	size_t	num;
+	int		sign;
+	int		i;
 
 	num = 0;
 	sign = 1;

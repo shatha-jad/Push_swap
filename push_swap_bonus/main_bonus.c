@@ -6,7 +6,7 @@
 /*   By: sjadalla <sjadalla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 14:03:59 by sjadalla          #+#    #+#             */
-/*   Updated: 2023/01/07 20:35:26 by sjadalla         ###   ########.fr       */
+/*   Updated: 2023/01/08 20:21:57 by sjadalla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,23 +68,10 @@ int	rev_eng(t_all *all)
 
 void	init_struct(t_all *all, t_stack **top_a, t_stack **top_b)
 {
-	int		i;
-	t_stack	*tmp;
-
-	i = -1;
 	all->top_a = top_a;
 	all->top_b = top_b;
 	all->stack_size_a = check_size(*all->top_a);
 	all->stack_size = all->stack_size_a;
-	all->array = malloc(all->stack_size_a * sizeof(int));
-	all->stack_size_b = 0;
-	tmp = *all->top_a;
-	while (++i < all->stack_size_a && tmp != NULL)
-	{
-		all->array[i] = tmp->data;
-		tmp = tmp->next;
-	}
-	selectionsort(all->array, all->stack_size_a);
 }
 
 int	main(int argc, char **argv)

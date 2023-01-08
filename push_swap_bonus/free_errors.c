@@ -6,7 +6,7 @@
 /*   By: sjadalla <sjadalla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/19 20:54:01 by sjadalla          #+#    #+#             */
-/*   Updated: 2023/01/07 18:00:13 by sjadalla         ###   ########.fr       */
+/*   Updated: 2023/01/08 20:20:58 by sjadalla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 void	frees(t_all *all)
 {
-	free(all->array);
 	free(all->args);
 	ft_free(all->split);
 	free_stack(*all->top_a);
@@ -26,8 +25,6 @@ void	free_error_stack(t_stack *stack, t_all *all, int i)
 	free(all->args);
 	ft_free(all->split);
 	free_stack(stack);
-	if (i == 0)
-		free(all->array);
 	error_msg(i);
 }
 

@@ -15,6 +15,13 @@
 		"chrono": "c",
 		"limits": "c",
 		"ratio": "c",
-		"__locale": "c"
+		"__locale": "c",
+		"__cxx_version": "c",
+		"__tuple": "c",
+		"functional": "c",
+		"iterator": "c",
+		"optional": "c",
+		"tuple": "c",
+		"type_traits": "c"
 	}
 }

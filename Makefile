@@ -6,7 +6,7 @@
 #    By: sjadalla <sjadalla@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/14 16:21:12 by sjadalla          #+#    #+#              #
-#    Updated: 2023/01/07 21:00:21 by sjadalla         ###   ########.fr        #
+#    Updated: 2023/01/08 20:39:45 by sjadalla         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,11 +27,19 @@ $(NAME):    $(OBJS)
 
 all:        $(NAME)
 
+bonus:
+	${MAKE} -sC push_swap_bonus
+	mv push_swap_bonus/checker .
+
 clean:
 			$(RM) $(OBJS)
+			${MAKE} -sC push_swap_bonus clean
+			$(RM) checker
 
 fclean:		clean
 			$(RM) $(NAME)
+			${MAKE} -sC push_swap_bonus fclean
+			$(RM) checker
 
 re:			fclean all
 

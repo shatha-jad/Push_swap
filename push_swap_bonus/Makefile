@@ -6,18 +6,18 @@
 #    By: sjadalla <sjadalla@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/06 19:04:40 by sjadalla          #+#    #+#              #
-#    Updated: 2023/01/07 21:01:31 by sjadalla         ###   ########.fr        #
+#    Updated: 2023/01/08 20:37:36 by sjadalla         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 
 
-NAME        := push_swap_bonus
+NAME        := checker
 CC        := gcc
 CFLAGS    := -Wall -Wextra -Werror -g3
 RM      = rm -f
 
-SRCS        :=      checker.c \
+SRCS        :=      main_bonus.c \
                           free_errors.c \
                           ft_atoi.c \
                           ft_split.c \
