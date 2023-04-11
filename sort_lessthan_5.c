@@ -70,7 +70,7 @@ void	sort_4(t_all *all, char s)
 	min = smallest(all->stack_size_a, *all->top_a);
 	while ((*all->top_a)->next != NULL )
 	{
-		rotate_a_b(all->top_a, s);
+		revrotate_a_b(all->top_a, s);
 		if ((*all->top_a)->data == min)
 			break ;
 	}
@@ -88,7 +88,7 @@ void	sort_5(t_all *all, char s)
 	min = smallest(all->stack_size_a, *all->top_a);
 	while ((*all->top_a)->next != NULL )
 	{
-		rotate_a_b(all->top_a, s);
+		revrotate_a_b(all->top_a, s);
 		if ((*all->top_a)->data == min)
 			break ;
 	}
